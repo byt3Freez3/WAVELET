@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteHeader } from "@/components/SiteHeader";
 import { EnterpriseFooter } from "@/components/EnterpriseFooter";
 import { cn } from "@/lib/utils";
 import { ShoppingBag, Monitor, Smartphone, Globe, ArrowRight } from "lucide-react";
@@ -8,6 +7,8 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/work")({
   component: WorkPage,
 });
+
+import { useState } from "react";
 
 const projects = [
   {
@@ -21,6 +22,8 @@ const projects = [
     glowColor: "shadow-purple-500/20",
     badgeColor: "text-purple-300 bg-purple-500/10 border-purple-500/20",
     iconGlow: "from-purple-900/40 to-gray-900",
+    image: "/miraclewear_showcase.jpeg",
+    externalLink: "https://miraclerainwear.com/",
   },
   {
     title: "Computer Plaza",
@@ -33,6 +36,8 @@ const projects = [
     glowColor: "shadow-red-500/20",
     badgeColor: "text-red-300 bg-red-500/10 border-red-500/20",
     iconGlow: "from-red-900/40 to-gray-900",
+    image: "/computer_plaza_showcase.jpeg",
+    externalLink: "https://cponline.in/",
   },
   {
     title: "Manoj Singh Computer Wala",
@@ -45,6 +50,8 @@ const projects = [
     glowColor: "shadow-orange-500/20",
     badgeColor: "text-orange-300 bg-orange-500/10 border-orange-500/20",
     iconGlow: "from-orange-900/40 to-gray-900",
+    image: "/manoj_singh_showcase.jpeg",
+    externalLink: "https://www.manojsinghcomputerwala.com/",
   },
   {
     title: "Rongeen",
@@ -57,11 +64,14 @@ const projects = [
     glowColor: "shadow-amber-500/20",
     badgeColor: "text-amber-300 bg-amber-500/10 border-amber-500/20",
     iconGlow: "from-amber-900/40 to-gray-900",
+    image: "/rongeen_showcase.jpeg",
+    externalLink: "https://www.rongeen.in/",
   },
 ];
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function CaseStudyCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const Icon = project.icon;
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <motion.div 
@@ -70,12 +80,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
       className={cn(
-        "group flex flex-col lg:flex-row bg-gray-950/40 backdrop-blur-2xl border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_40px_100px_-20px]",
+        "group flex flex-col-reverse lg:flex-row w-full bg-gray-950/40 backdrop-blur-2xl border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_40px_100px_-20px]",
         project.glowColor
       )}
     >
       {/* Content Side */}
-      <div className="w-full lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center relative z-10">
+      <div className="w-full lg:w-1/2 p-6 sm:p-10 lg:p-14 flex flex-col justify-center relative z-10">
         <div className="flex flex-wrap gap-4 mb-6">
           {project.tags.map((tag) => (
             <span key={tag} className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
@@ -93,24 +103,14 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         </p>
 
         <div className="flex flex-col items-start gap-8">
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 + index * 0.1, ease: "easeOut" }}
-            className={cn(
-              "px-6 py-2.5 rounded-full border text-xs font-bold transition-all duration-500",
-              project.badgeColor
-            )}
-          >
-            {project.metric}
-          </motion.div>
-
           <motion.a 
             whileTap={{ scale: 0.95 }}
-            href="/contact" 
+            href={project.externalLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors group/link text-sm font-medium"
           >
-            Read case study 
+            Visit project site
             <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
           </motion.a>
         </div>
@@ -118,39 +118,70 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
       {/* Visual Side */}
       <div className={cn(
-        "w-full lg:w-1/2 min-h-[400px] relative overflow-hidden flex items-center justify-center bg-gradient-to-br transition-all duration-700",
+        "w-full lg:w-1/2 min-h-[300px] sm:min-h-[400px] relative overflow-hidden flex items-center justify-center transition-all duration-700",
         project.iconGlow
       )}>
+        {/* Skeleton Loader */}
+        {!isImageLoaded && (
+          <div className="absolute inset-0 bg-gray-800 animate-pulse rounded-3xl z-20" />
+        )}
+
+        {/* Project Image */}
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
+          <img 
+            src={project.image} 
+            alt={project.title}
+            onLoad={() => setIsImageLoaded(true)}
+            className={cn(
+              "w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105",
+              isImageLoaded ? "opacity-100 blur-0" : "opacity-0 blur-md"
+            )}
+          />
+          {/* Dark Overlay for Depth */}
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" />
+        </motion.div>
+
         {/* Spotlight Effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_60%)] z-10" />
         
-        {/* Animated Icon with Hover Physics */}
+        {/* Metric Badge (Floating on Image) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -5, scale: 1.05 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className={cn(
+            "absolute top-8 left-8 z-30 px-5 py-2 rounded-full backdrop-blur-xl border text-[10px] font-bold uppercase tracking-widest shadow-xl transition-all duration-500",
+            project.badgeColor
+          )}
+        >
+          {project.metric}
+        </motion.div>
+
+        {/* Animated Icon (Miniature Version) */}
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 3 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="relative"
+          className="relative z-20"
         >
-          <Icon className="h-28 w-28 text-white/20 stroke-[1px] animate-pulse [animation-duration:4s]" />
-          <div className="absolute inset-0 blur-[60px] bg-white/5 rounded-full" />
+          <div className="h-20 w-20 rounded-2xl bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-2xl">
+            <Icon className="h-10 w-10 text-white/40 stroke-[1.5px]" />
+          </div>
         </motion.div>
 
         {/* Status Tag */}
-        <div className="absolute bottom-6 right-6 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center gap-2">
+        <div className="absolute bottom-6 right-6 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center gap-2 z-20">
            <span className="relative flex h-2 w-2">
              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
            </span>
            <span className="text-[10px] uppercase tracking-widest font-bold text-white/60">{project.status}</span>
         </div>
-
-        {/* Wireframe Grid */}
-        <div 
-          className="absolute inset-0 opacity-[0.05] pointer-events-none" 
-          style={{ 
-            backgroundImage: "linear-gradient(to right, #ffffff22 1px, transparent 1px), linear-gradient(to bottom, #ffffff22 1px, transparent 1px)",
-            backgroundSize: "40px 40px"
-          }} 
-        />
       </div>
     </motion.div>
   );
@@ -158,9 +189,8 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
 function WorkPage() {
   return (
-    <div className="min-h-screen bg-black font-sans antialiased selection:bg-white/10 selection:text-white">
-      {/* Navigation */}
-      <SiteHeader />
+    <div className="min-h-screen bg-gray-950 font-sans antialiased selection:bg-white/10 selection:text-white">
+      {/* Navigation moved to __root.tsx */}
       
       <main className="relative">
         {/* Hero Ambient Glow */}
@@ -186,10 +216,9 @@ function WorkPage() {
             </h1>
           </motion.div>
 
-          {/* Showcase Stack */}
           <div className="flex flex-col gap-16">
             {projects.map((project, i) => (
-              <ProjectCard key={project.title} project={project} index={i} />
+              <CaseStudyCard key={project.title} project={project} index={i} />
             ))}
           </div>
 
@@ -220,22 +249,6 @@ function WorkPage() {
       </main>
 
       <EnterpriseFooter />
-
-      {/* Page Specific Global Overrides */}
-      <style>{`
-        header {
-          background-color: rgba(0, 0, 0, 0.4) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(16px) !important;
-        }
-        header span, header a {
-          color: white !important;
-        }
-        header div {
-          background-color: rgba(255, 255, 255, 0.03) !important;
-          border-color: rgba(255, 255, 255, 0.05) !important;
-        }
-      `}</style>
     </div>
   );
 }

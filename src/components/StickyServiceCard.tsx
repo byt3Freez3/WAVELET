@@ -46,13 +46,14 @@ export function StickyServiceCard({ data, index, total }: Props) {
           </span>
         </div>
 
-        {/* Content grid */}
-        <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-2 space-y-6">
-            <h3 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
+        {/* Content layout */}
+        <div className="flex flex-col lg:flex-row w-full gap-10 lg:gap-14 items-center">
+          {/* Text Column */}
+          <div className="w-full lg:w-2/5 space-y-6">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
               {data.title}
             </h3>
-            <p className="text-lg text-gray-400 leading-relaxed max-w-md">
+            <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-md">
               {data.description}
             </p>
             <ul className="space-y-3 pt-4">
@@ -72,9 +73,9 @@ export function StickyServiceCard({ data, index, total }: Props) {
             </ul>
           </div>
 
-          {/* Visual bento area */}
-          <div className="lg:col-span-3">
-            <div className="rounded-3xl bg-black/40 backdrop-blur-xl border border-white/5 p-8 min-h-[300px] sm:min-h-[400px] flex items-center justify-center relative overflow-hidden group">
+          {/* Visual Column */}
+          <div className="w-full lg:w-3/5 h-64 sm:h-80 lg:h-auto min-h-[250px] lg:min-h-[400px]">
+            <div className="h-full rounded-3xl bg-black/40 backdrop-blur-xl border border-white/5 p-6 sm:p-8 flex items-center justify-center relative overflow-hidden group">
               {/* Internal glow */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_70%)] group-hover:opacity-100 transition-opacity duration-700" />
               {data.visual}

@@ -158,6 +158,11 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    cursor: none;
+  }
+
+  a, button {
+    cursor: none;
   }
 }
 

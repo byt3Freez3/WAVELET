@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteHeader } from "@/components/SiteHeader";
 import { EnterpriseFooter } from "@/components/EnterpriseFooter";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -43,16 +42,15 @@ function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black font-sans antialiased selection:bg-white/10 selection:text-white">
-      <SiteHeader />
+    <div className="min-h-screen bg-gray-950 font-sans antialiased selection:bg-white/10 selection:text-white overflow-x-hidden">
       
-      <main className="relative pt-40 pb-48">
+      <main className="relative pt-32 sm:pt-40 pb-16 lg:pb-32 px-4 sm:px-6 overflow-x-hidden">
         {/* Ambient Glows */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-600/5 blur-[120px] rounded-full -z-10" />
 
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-12 items-stretch">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-12 items-stretch w-full overflow-hidden">
             
             {/* Left Column - VIP Form */}
             <motion.div 
@@ -60,7 +58,7 @@ function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:w-[60%] bg-gray-900/30 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-10 lg:p-14"
+              className="w-full lg:w-[60%] bg-gray-900/30 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 sm:p-10 lg:p-14 overflow-hidden"
             >
               <h1 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight mb-4">
                 Start a conversation.
@@ -196,22 +194,6 @@ function ContactPage() {
       </main>
 
       <EnterpriseFooter />
-
-      {/* Page Specific Global Overrides */}
-      <style>{`
-        header {
-          background-color: rgba(0, 0, 0, 0.4) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(16px) !important;
-        }
-        header span, header a {
-          color: white !important;
-        }
-        header div {
-          background-color: rgba(255, 255, 255, 0.03) !important;
-          border-color: rgba(255, 255, 255, 0.05) !important;
-        }
-      `}</style>
     </div>
   );
 }

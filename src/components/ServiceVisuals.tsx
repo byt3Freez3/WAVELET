@@ -1,4 +1,5 @@
 // Bento visuals — pure SVG/CSS mockups, no external assets.
+import { motion } from "framer-motion";
 
 export function PlatformVisual() {
   return (
@@ -36,12 +37,24 @@ export function PlatformVisual() {
 export function GrowthVisual() {
   return (
     <div className="w-full space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-xs text-gray-500">Organic traffic</p>
-          <p className="text-2xl font-semibold text-gray-900">+248%</p>
-        </div>
-        <span className="rounded-full bg-emerald-100 text-emerald-700 px-2.5 py-1 text-xs font-medium">↑ 32 this week</span>
+      <div className="bg-gray-900/20 border border-white/5 rounded-2xl p-8 backdrop-blur-sm">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col gap-1"
+        >
+          <span className="text-white font-bold tracking-[0.2em] text-[10px] uppercase opacity-80">Organic Traffic</span>
+          <p className="text-4xl lg:text-5xl font-bold text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">
+            +248%
+          </p>
+          <div className="mt-2">
+            <span className="rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest">
+              ↑ 32 this week
+            </span>
+          </div>
+        </motion.div>
       </div>
       <svg viewBox="0 0 300 100" className="w-full h-24">
         <defs>

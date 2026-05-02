@@ -107,8 +107,12 @@ export function EnterpriseFooter() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="h-7 w-7 rounded-lg bg-white text-gray-950 flex items-center justify-center text-[11px] font-bold">W</span>
+          <div className="flex items-center gap-4">
+            <img 
+              src="/wavelet-logo.png" 
+              alt="Wavelet Logo" 
+              className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+            />
             <span className="text-sm text-gray-500">© {new Date().getFullYear()} Wavelet. Crafted with intention.</span>
           </div>
           <div className="text-xs text-gray-600 font-mono">v2.0 · status: all systems operational</div>

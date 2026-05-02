@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteHeader } from "@/components/SiteHeader";
 import { EnterpriseFooter } from "@/components/EnterpriseFooter";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -116,12 +115,11 @@ function ProfileCard({ person, index, isFounder }: { person: any; index: number;
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-black font-sans antialiased selection:bg-white/10 selection:text-white">
-      <SiteHeader />
+    <div className="min-h-screen bg-gray-950 font-sans antialiased selection:bg-white/10 selection:text-white">
       
       <main className="relative">
         {/* Hero Section */}
-        <section className="relative pt-40 pb-20 overflow-hidden">
+        <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 overflow-hidden">
           <div 
             aria-hidden="true"
             className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-950 to-gray-950 -z-10"
@@ -140,7 +138,7 @@ function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight text-white leading-[0.9] mb-8"
+              className="text-4xl sm:text-6xl lg:text-8xl font-semibold tracking-tight text-white leading-[0.9] mb-8"
             >
               The minds behind <br />
               <span className="text-white/20">Wavelet.</span>
@@ -157,7 +155,7 @@ function AboutPage() {
         </section>
 
         {/* Team Grid */}
-        <section className="max-w-6xl mx-auto px-4 py-24 flex flex-col gap-24">
+        <section className="max-w-6xl mx-auto px-4 py-16 lg:py-24 flex flex-col gap-24">
           {/* Founders Tier */}
           <div>
             <motion.div
@@ -168,7 +166,7 @@ function AboutPage() {
             >
               <h2 className="text-xl font-semibold text-white/40 tracking-[0.2em] uppercase">Foundership</h2>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {founders.map((person, i) => (
                 <ProfileCard key={person.name} person={person} index={i} isFounder={true} />
               ))}
@@ -185,7 +183,7 @@ function AboutPage() {
             >
               <h2 className="text-xl font-semibold text-white/40 tracking-[0.2em] uppercase">Specialists</h2>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {experts.map((person, i) => (
                 <ProfileCard key={person.name} person={person} index={i} isFounder={false} />
               ))}
@@ -209,22 +207,6 @@ function AboutPage() {
       </main>
 
       <EnterpriseFooter />
-
-      {/* Page Specific Global Overrides */}
-      <style>{`
-        header {
-          background-color: rgba(0, 0, 0, 0.4) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(16px) !important;
-        }
-        header span, header a {
-          color: white !important;
-        }
-        header div {
-          background-color: rgba(255, 255, 255, 0.03) !important;
-          border-color: rgba(255, 255, 255, 0.05) !important;
-        }
-      `}</style>
     </div>
   );
 }

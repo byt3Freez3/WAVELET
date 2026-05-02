@@ -7,13 +7,14 @@ export function ScrollToTop() {
   const { scrollY } = useScroll();
 
   useEffect(() => {
-    return scrollY.onChange((latest) => {
+    const unsubscribe = scrollY.on("change", (latest) => {
       if (latest > 400) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     });
+    return () => unsubscribe();
   }, [scrollY]);
 
   const scrollToTop = () => {
@@ -30,10 +31,10 @@ export function ScrollToTop() {
           initial={{ opacity: 0, y: 20, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.8 }}
-          whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white shadow-[0_0_20px_-5px_rgba(255,255,255,0.1)] transition-colors duration-300 pointer-events-auto"
+          className="fixed bottom-8 right-8 z-[90] flex items-center justify-center w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-xl border border-white/10 text-white shadow-2xl hover:bg-white/10 transition-all duration-300 cursor-pointer"
           aria-label="Back to top"
         >
           <ArrowUp className="h-5 w-5" />

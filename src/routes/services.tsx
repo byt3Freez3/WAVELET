@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useRef } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
 import { EnterpriseFooter } from "@/components/EnterpriseFooter";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -238,58 +237,61 @@ const services = [
     content: (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
-          className="col-span-1 bg-gray-900/40 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-500"
+          className="col-span-1 bg-gray-900/40 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col items-center justify-center gap-6 overflow-hidden min-h-[250px]"
         >
-           <div className="space-y-4">
-             <div className="flex gap-5">
-                <div className="flex flex-col items-center">
-                   <div className="h-6 w-6 rounded-full bg-white text-gray-950 flex items-center justify-center text-[10px] font-black">1</div>
-                   <div className="w-px flex-1 bg-white/10 my-2" />
+          {/* The "W" Drop & Tilt */}
+          <motion.div 
+            variants={{
+              initial: { y: -100, opacity: 0, rotate: 0 },
+              animate: { 
+                y: 0, 
+                opacity: 1, 
+                rotate: 12 
+              }
+            }}
+            transition={{ 
+              duration: 0.8, 
+              type: "tween",
+              ease: "backOut"
+            }}
+            className="h-16 w-16 rounded-2xl bg-white flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+          >
+             <span className="text-gray-950 text-xl font-black">W</span>
+          </motion.div>
+
+          {/* The Line-by-Line Reveal (Synced) */}
+          <div className="overflow-hidden">
+            <motion.div
+              variants={{
+                initial: { opacity: 1 },
+                animate: {
+                  opacity: 1,
+                  transition: {
+                    delayChildren: 0.6,
+                    staggerChildren: 0.08
+                  }
+                }
+              }}
+              className="flex gap-1"
+            >
+              {"WAVELET".split("").map((letter, i) => (
+                <div key={i} className="overflow-hidden">
+                  <motion.span
+                    variants={{
+                      initial: { y: "100%" },
+                      animate: { y: 0 }
+                    }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="block text-2xl font-black text-white/20 uppercase tracking-widest"
+                  >
+                    {letter}
+                  </motion.span>
                 </div>
-                <div className="pb-4">
-                   <p className="text-xs font-bold text-white uppercase tracking-widest">Audit</p>
-                   <p className="text-[11px] text-gray-500 mt-1 uppercase tracking-wider">System assessment</p>
-                </div>
-             </div>
-             <div className="flex gap-5">
-                <div className="flex flex-col items-center">
-                   <div className="h-6 w-6 rounded-full bg-white text-gray-950 flex items-center justify-center text-[10px] font-black">2</div>
-                   <div className="w-px flex-1 bg-white/10 my-2" />
-                </div>
-                <div className="pb-4">
-                   <p className="text-xs font-bold text-white uppercase tracking-widest">Strategy</p>
-                   <p className="text-[11px] text-gray-500 mt-1 uppercase tracking-wider">Technology roadmap</p>
-                </div>
-             </div>
-             <div className="flex gap-5">
-                <div className="flex flex-col items-center">
-                   <div className="h-6 w-6 rounded-full bg-white text-gray-950 flex items-center justify-center text-[10px] font-black">3</div>
-                </div>
-                <div>
-                   <p className="text-xs font-bold text-white uppercase tracking-widest">Execution</p>
-                   <p className="text-[11px] text-gray-500 mt-1 uppercase tracking-wider">Phased rollout</p>
-                </div>
-             </div>
-           </div>
-        </motion.div>
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.15 }}
-          className="col-span-1 bg-gray-900/40 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-500 flex items-center justify-center"
-        >
-          <div className="relative h-32 w-32">
-             <div className="absolute inset-0 rounded-full border border-white/5 animate-ping opacity-20" />
-             <div className="absolute inset-4 rounded-full border border-white/5 animate-ping opacity-40 [animation-delay:0.2s]" />
-             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-16 w-16 rounded-2xl bg-white rotate-12 flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                   <span className="text-gray-950 text-xl font-black">W</span>
-                </div>
-             </div>
+              ))}
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -342,7 +344,6 @@ function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-gray-950 font-sans antialiased selection:bg-white selection:text-gray-950">
-      <SiteHeader />
       
       <main className="max-w-7xl mx-auto px-4 py-40">
         <div className="lg:grid lg:grid-cols-12 gap-20">
@@ -440,22 +441,6 @@ function ServicesPage() {
       </main>
 
       <EnterpriseFooter />
-
-      {/* Page Specific Global Overrides */}
-      <style>{`
-        header {
-          background-color: rgba(0, 0, 0, 0.4) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(16px) !important;
-        }
-        header span, header a {
-          color: white !important;
-        }
-        header div {
-          background-color: rgba(255, 255, 255, 0.03) !important;
-          border-color: rgba(255, 255, 255, 0.05) !important;
-        }
-      `}</style>
     </div>
   );
 }

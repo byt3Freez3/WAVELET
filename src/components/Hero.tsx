@@ -52,7 +52,7 @@ export function Hero() {
 
         <motion.h1 
           variants={itemVariants}
-          className="mt-7 text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-semibold tracking-[-0.04em] text-white leading-[0.98]"
+          className="mt-7 text-4xl sm:text-5xl lg:text-[5.5rem] font-semibold tracking-[-0.04em] text-white leading-tight sm:leading-[0.98]"
         >
           Your One-Stop IT
           <br />
@@ -109,7 +109,7 @@ export function Hero() {
           </div>
 
           {/* Dashboard body */}
-          <div className="grid grid-cols-12 gap-6 p-6 sm:p-10 h-[350px] sm:h-[450px]">
+          <div className="flex flex-col sm:grid sm:grid-cols-12 gap-4 sm:gap-6 p-6 sm:p-10 h-auto sm:h-[450px]">
             {/* Sidebar */}
             <div className="hidden sm:flex col-span-2 flex-col gap-3">
               <div className="h-8 rounded-xl bg-white/10" />
@@ -119,20 +119,20 @@ export function Hero() {
               <div className="h-6 rounded-xl bg-white/5" />
             </div>
             {/* Main */}
-            <div className="col-span-12 sm:col-span-10 grid grid-cols-6 gap-6">
-              <div className="col-span-2 rounded-2xl p-6 flex flex-col justify-between bg-blue-500/10 border border-blue-500/20">
+            <div className="col-span-12 sm:col-span-10 flex flex-col sm:grid sm:grid-cols-6 gap-4 sm:gap-6">
+              <div className="w-full sm:col-span-2 rounded-2xl p-6 flex flex-row sm:flex-col justify-between items-center sm:items-start bg-blue-500/10 border border-blue-500/20">
                 <span className="text-[10px] font-bold text-blue-400/70 uppercase tracking-[0.2em]">Revenue</span>
-                <span className="text-3xl font-bold text-white tracking-tight">$248k</span>
+                <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight">$248k</span>
               </div>
-              <div className="col-span-2 rounded-2xl p-6 flex flex-col justify-between bg-emerald-500/10 border border-emerald-500/20">
+              <div className="w-full sm:col-span-2 rounded-2xl p-6 flex flex-row sm:flex-col justify-between items-center sm:items-start bg-emerald-500/10 border border-emerald-500/20">
                 <span className="text-[10px] font-bold text-emerald-400/70 uppercase tracking-[0.2em]">Uptime</span>
-                <span className="text-3xl font-bold text-white tracking-tight">99.98%</span>
+                <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight">99.98%</span>
               </div>
-              <div className="col-span-2 rounded-2xl p-6 flex flex-col justify-between bg-purple-500/10 border border-purple-500/20">
+              <div className="w-full sm:col-span-2 rounded-2xl p-6 flex flex-row sm:flex-col justify-between items-center sm:items-start bg-purple-500/10 border border-purple-500/20">
                 <span className="text-[10px] font-bold text-purple-400/70 uppercase tracking-[0.2em]">Deploys</span>
-                <span className="text-3xl font-bold text-white tracking-tight">42 / wk</span>
+                <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight">42 / wk</span>
               </div>
-              <div className="col-span-6 rounded-2xl bg-white/5 border border-white/5 p-6 relative overflow-hidden">
+              <div className="w-full sm:col-span-6 rounded-2xl bg-white/5 border border-white/5 p-6 relative overflow-hidden">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-bold text-gray-400 tracking-wider">Performance</span>
                   <div className="flex gap-2">
@@ -140,7 +140,7 @@ export function Hero() {
                     <div className="h-2 w-2 rounded-full bg-purple-500" />
                   </div>
                 </div>
-                <svg viewBox="0 0 400 100" className="w-full h-[150px] sm:h-[180px]">
+                <svg viewBox="0 0 400 100" className="w-full h-[120px] sm:h-[180px]">
                   <defs>
                     <linearGradient id="heroChartDark" x1="0" x2="0" y1="0" y2="1">
                       <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />

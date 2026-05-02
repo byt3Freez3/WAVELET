@@ -141,22 +141,22 @@ export function BentoGrid() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Cloud Infrastructure */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-2 group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-10 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
+            className="sm:col-span-2 group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-8 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
           >
-            <div className="flex flex-col h-full justify-between gap-16 min-h-[350px]">
+            <div className="flex flex-col h-full justify-between gap-12 sm:gap-16 min-h-[300px] sm:min-h-[350px]">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">01 — Infrastructure</span>
-                <h3 className="mt-4 text-3xl font-semibold text-white tracking-tight">Cloud Infrastructure</h3>
-                <p className="mt-5 text-lg text-gray-400 max-w-md leading-relaxed">Auto-scaling, multi-region deployments on AWS, Azure & GCP — provisioned in minutes.</p>
+                <h3 className="mt-4 text-2xl sm:text-3xl font-semibold text-white tracking-tight">Cloud Infrastructure</h3>
+                <p className="mt-5 text-base sm:text-lg text-gray-400 max-w-md leading-relaxed">Auto-scaling, multi-region deployments on AWS, Azure & GCP — provisioned in minutes.</p>
               </div>
-              <div className="rounded-2xl border border-white/5 bg-black/20 p-8">
+              <div className="rounded-2xl border border-white/5 bg-black/20 p-6 sm:p-8">
                 <div className="flex items-center justify-between mb-6 px-1">
                   <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Node Performance</span>
                   <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full uppercase tracking-widest">+412%</span>
@@ -172,13 +172,13 @@ export function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-10 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
+            className="group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-8 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
           >
-            <div className="flex flex-col h-full justify-between gap-16 min-h-[350px]">
+            <div className="flex flex-col h-full justify-between gap-12 sm:gap-16 min-h-[300px] sm:min-h-[350px]">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">02 — Security</span>
-                <h3 className="mt-4 text-3xl font-semibold text-white tracking-tight">Cybersecurity</h3>
-                <p className="mt-5 text-lg text-gray-400 leading-relaxed">Enterprise-grade protection baked into every layer of your application.</p>
+                <h3 className="mt-4 text-2xl sm:text-3xl font-semibold text-white tracking-tight">Cybersecurity</h3>
+                <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">Enterprise-grade protection baked into every layer of your application.</p>
               </div>
               <ShieldBadge />
             </div>
@@ -190,13 +190,13 @@ export function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-10 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
+            className="group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-8 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
           >
-            <div className="flex flex-col h-full justify-between gap-16 min-h-[350px]">
+            <div className="flex flex-col h-full justify-between gap-12 sm:gap-16 min-h-[300px] sm:min-h-[350px]">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">03 — Connect</span>
-                <h3 className="mt-4 text-3xl font-semibold text-white tracking-tight">API Engines</h3>
-                <p className="mt-5 text-lg text-gray-400 leading-relaxed">Wire any system together — gracefully and reliably.</p>
+                <h3 className="mt-4 text-2xl sm:text-3xl font-semibold text-white tracking-tight">API Engines</h3>
+                <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">Wire any system together — gracefully and reliably.</p>
               </div>
               <CodeSnippet />
             </div>
@@ -208,13 +208,13 @@ export function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-2 group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-10 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
+            className="sm:col-span-2 group rounded-[2.5rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 p-8 sm:p-12 shadow-2xl hover:border-white/20 transition-all duration-500"
           >
-            <div className="flex flex-col h-full justify-between gap-16 min-h-[350px]">
+            <div className="flex flex-col h-full justify-between gap-12 sm:gap-16 min-h-[300px] sm:min-h-[350px]">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">04 — Commerce</span>
-                <h3 className="mt-4 text-3xl font-semibold text-white tracking-tight">E-commerce</h3>
-                <p className="mt-5 text-lg text-gray-400 max-w-md leading-relaxed">Sub-second checkouts, automated fulfillment, and real-time inventory management.</p>
+                <h3 className="mt-4 text-2xl sm:text-3xl font-semibold text-white tracking-tight">E-commerce</h3>
+                <p className="mt-5 text-base sm:text-lg text-gray-400 max-w-md leading-relaxed">Sub-second checkouts, automated fulfillment, and real-time inventory management.</p>
               </div>
               <CheckoutSuccess />
             </div>
