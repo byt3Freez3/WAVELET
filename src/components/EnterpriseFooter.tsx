@@ -1,19 +1,45 @@
+import { Link } from "@tanstack/react-router";
+
 const columns = [
   {
     title: "Company",
-    links: ["About", "Careers", "Press", "Partners", "Blog"],
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Careers", to: "#" },
+      { label: "Press", to: "#" },
+      { label: "Partners", to: "#" },
+      { label: "Blog", to: "#" }
+    ],
   },
   {
     title: "Services",
-    links: ["Platforms", "Growth", "Cloud", "Consultancy", "Support"],
+    links: [
+      { label: "Platforms", to: "/services" },
+      { label: "Growth", to: "/services" },
+      { label: "Cloud", to: "/services" },
+      { label: "Consultancy", to: "/services" },
+      { label: "Support", to: "/services" }
+    ],
   },
   {
     title: "Legal",
-    links: ["Privacy", "Terms", "Security", "Compliance", "Cookies"],
+    links: [
+      { label: "Privacy", to: "#" },
+      { label: "Terms", to: "#" },
+      { label: "Security", to: "#" },
+      { label: "Compliance", to: "#" },
+      { label: "Cookies", to: "#" }
+    ],
   },
   {
     title: "Connect",
-    links: ["LinkedIn", "X / Twitter", "GitHub", "YouTube", "Contact"],
+    links: [
+      { label: "LinkedIn", to: "#" },
+      { label: "X / Twitter", to: "#" },
+      { label: "GitHub", to: "#" },
+      { label: "YouTube", to: "#" },
+      { label: "Contact", to: "/contact" }
+    ],
   },
 ];
 
@@ -51,12 +77,12 @@ export function EnterpriseFooter() {
               A 30-minute strategy call. Walk away with a roadmap, no commitment.
             </p>
             <div className="mt-9">
-              <a
-                href="mailto:hello@wavelet.dev"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-white text-gray-950 text-base font-medium px-8 py-4 hover:bg-gray-100 transition-transform hover:scale-[1.03] shadow-[0_20px_60px_rgba(255,255,255,0.15)]"
               >
                 Let's talk →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -68,10 +94,10 @@ export function EnterpriseFooter() {
               <h4 className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">{col.title}</h4>
               <ul className="mt-5 space-y-3">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-sm text-gray-500 hover:text-white transition">
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    <Link to={l.to} className="text-sm text-gray-500 hover:text-white transition">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

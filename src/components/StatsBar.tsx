@@ -4,52 +4,69 @@ const stats = [
   { value: "24/7", label: "Dedicated Support", sub: "Global on-call engineers" },
 ];
 
-import { useReveal } from "@/hooks/useReveal";
+import { motion } from "framer-motion";
 
 export function StatsBar() {
-  const containerRef = useReveal();
-
   return (
-    <section ref={containerRef} className="relative px-4 py-24 sm:py-32 overflow-hidden bg-gray-950 text-white">
-      {/* Glow */}
+    <section className="relative px-4 py-32 overflow-hidden bg-gray-950">
+      {/* Cinematic Ambient Glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-0 opacity-60"
+        className="pointer-events-none absolute inset-0 -z-0 opacity-40 blur-[120px]"
         style={{
           background:
-            "radial-gradient(50% 60% at 20% 50%, oklch(0.45 0.22 270 / 0.5) 0%, transparent 60%), radial-gradient(40% 50% at 85% 30%, oklch(0.55 0.2 200 / 0.45) 0%, transparent 60%)",
+            "radial-gradient(50% 60% at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 60%), radial-gradient(40% 50% at 85% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 60%)",
         }}
       />
+      
+      {/* Subtle Grid Overlay */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-0 opacity-[0.06]"
+        className="pointer-events-none absolute inset-0 -z-0 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "80px 80px",
         }}
       />
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="text-center mb-16 reveal">
-          <span className="text-xs uppercase tracking-[0.25em] text-white/50 font-medium">By the numbers</span>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-semibold tracking-[-0.03em]">
-            Performance you can <span className="italic font-light text-white/70">trust</span>.
-          </h2>
+        <div className="text-center mb-24">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold"
+          >
+            Engineering Excellence
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-white"
+          >
+            Performance you can <span className="text-white/40 italic">trust</span>.
+          </motion.h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-0">
           {stats.map((s, i) => (
-            <div
+            <motion.div
               key={s.label}
-              className="text-center md:px-6 md:border-r md:border-white/10 last:border-r-0 first:border-l-0 reveal"
-              style={{ transitionDelay: `${i * 150}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center md:px-12 md:border-r border-white/5 last:border-r-0"
             >
-              <div className="text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-[-0.05em] bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(180deg, white 0%, oklch(0.7 0.04 260) 100%)" }}>
+              <div className="text-7xl sm:text-8xl lg:text-9xl font-semibold tracking-tighter text-white">
                 {s.value}
               </div>
-              <p className="mt-4 text-base font-medium text-white">{s.label}</p>
-              <p className="mt-1 text-sm text-white/50">{s.sub}</p>
-            </div>
+              <p className="mt-6 text-sm font-bold text-white uppercase tracking-widest">{s.label}</p>
+              <p className="mt-2 text-xs text-gray-500 uppercase tracking-widest font-medium">{s.sub}</p>
+            </motion.div>
           ))}
         </div>
       </div>

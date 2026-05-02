@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export function FinalCTA() {
   return (
     <section id="contact" className="px-4 py-32">
@@ -12,18 +14,18 @@ export function FinalCTA() {
             Let's map out your next 12 months. A 30-minute call, zero pressure.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="mailto:hello@wavelet.dev"
+            <Link
+              to="/contact"
               className="w-full sm:w-auto rounded-full bg-gray-900 text-white text-base font-medium px-8 py-4 hover:bg-gray-800 transition-transform hover:scale-[1.03] shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
             >
               Book a strategy call
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              to="/work"
               className="w-full sm:w-auto rounded-full text-gray-900 text-base font-medium px-7 py-4 hover:bg-gray-100 transition"
             >
               See our work →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -40,11 +42,11 @@ export function SiteFooter() {
           <span className="text-sm text-gray-500">© {new Date().getFullYear()} Wavelet. All rights reserved.</span>
         </div>
         <nav className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-gray-400">
-          <a href="#" className="hover:text-gray-700 transition">Privacy</a>
-          <a href="#" className="hover:text-gray-700 transition">Terms</a>
-          <a href="#" className="hover:text-gray-700 transition">Security</a>
-          <a href="#" className="hover:text-gray-700 transition">Careers</a>
-          <a href="#" className="hover:text-gray-700 transition">Contact</a>
+          <Link to="#" className="hover:text-gray-700 transition">Privacy</Link>
+          <Link to="#" className="hover:text-gray-700 transition">Terms</Link>
+          <Link to="#" className="hover:text-gray-700 transition">Security</Link>
+          <Link to="#" className="hover:text-gray-700 transition">Careers</Link>
+          <Link to="/contact" className="hover:text-gray-700 transition">Contact</Link>
         </nav>
       </div>
     </footer>

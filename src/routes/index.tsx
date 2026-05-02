@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen font-sans antialiased" style={{ backgroundColor: "#fbfbfd", fontFamily: "var(--font-sans)" }}>
+    <div className="min-h-screen font-sans antialiased bg-gray-950 text-white">
       <SiteHeader />
       <main>
         <Hero />

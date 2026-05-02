@@ -9,8 +9,9 @@ const services: ServiceCardData[] = [
     description:
       "Websites, web apps, and mobile apps — engineered end-to-end with modern stacks and pixel-perfect craft.",
     bullets: ["Marketing websites", "Custom web applications", "iOS & Android apps"],
-    gradient: "var(--gradient-blue)",
+    gradient: "bg-gray-900/50",
     accent: "rgb(59 130 246)",
+    glow: "shadow-[0_0_80px_-20px_rgba(59,130,246,0.3)]",
     visual: <PlatformVisual />,
   },
   {
@@ -20,8 +21,9 @@ const services: ServiceCardData[] = [
     description:
       "Performance marketing, technical SEO, and social strategy that compounds traffic and turns visitors into revenue.",
     bullets: ["SEO & content engines", "Paid acquisition", "Social & brand"],
-    gradient: "var(--gradient-mint)",
+    gradient: "bg-gray-900/50",
     accent: "rgb(16 185 129)",
+    glow: "shadow-[0_0_80px_-20px_rgba(16,185,129,0.3)]",
     visual: <GrowthVisual />,
   },
   {
@@ -31,8 +33,9 @@ const services: ServiceCardData[] = [
     description:
       "OEM licensing, Microsoft Cloud & CRM, endpoint security and antivirus — your entire stack, deployed and managed.",
     bullets: ["Microsoft 365 & Dynamics", "Cloud migration", "Endpoint security"],
-    gradient: "var(--gradient-peach)",
+    gradient: "bg-gray-900/50",
     accent: "rgb(249 115 22)",
+    glow: "shadow-[0_0_80px_-20px_rgba(249,115,22,0.3)]",
     visual: <EnterpriseVisual />,
   },
   {
@@ -42,8 +45,9 @@ const services: ServiceCardData[] = [
     description:
       "Strategic guidance for founders and CIOs — architecture, hiring, vendor decisions and roadmaps that scale with you.",
     bullets: ["Tech audits", "Roadmap & architecture", "Fractional CTO"],
-    gradient: "var(--gradient-lavender)",
+    gradient: "bg-gray-900/50",
     accent: "rgb(139 92 246)",
+    glow: "shadow-[0_0_80px_-20px_rgba(139,92,246,0.3)]",
     visual: <ConsultancyVisual />,
   },
 ];
@@ -57,17 +61,17 @@ export function ServicesStack() {
   ];
 
   return (
-    <section id="services" className="relative w-full min-h-[300vh] bg-[#fbfbfd] py-20 px-2 sm:px-4">
+    <section id="services" className="relative w-full min-h-[300vh] bg-gray-950 py-20 px-2 sm:px-4">
       <div className="mx-auto max-w-6xl text-center pt-10 pb-16 px-4">
-        <span className="inline-flex items-center rounded-full bg-white border border-gray-100 px-4 py-1.5 text-xs font-medium text-gray-600">
+        <span className="inline-flex items-center rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-xs font-bold text-gray-400 uppercase tracking-widest">
           What we do
         </span>
-        <h2 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.03em] text-gray-900 leading-[1]">
+        <h2 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white leading-[1]">
           Four pillars.
           <br />
-          One partner.
+          <span className="text-white/20">One partner.</span>
         </h2>
-        <p className="mt-5 text-base sm:text-lg text-gray-500 max-w-xl mx-auto">
+        <p className="mt-5 text-base sm:text-lg text-gray-400 max-w-xl mx-auto">
           Scroll through the stack — every layer of your IT, considered.
         </p>
       </div>
