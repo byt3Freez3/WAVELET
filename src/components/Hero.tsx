@@ -57,7 +57,7 @@ export function Hero() {
             <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
             <span className="h-2.5 w-2.5 rounded-full bg-green-300" />
-            <span className="ml-4 text-[11px] text-gray-400 font-mono">app.nexus-it.com/dashboard</span>
+            <span className="ml-4 text-[11px] text-gray-400 font-mono">app.wavelet.dev/dashboard</span>
           </div>
 
           {/* Dashboard body */}

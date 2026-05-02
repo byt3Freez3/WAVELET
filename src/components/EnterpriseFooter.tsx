@@ -52,7 +52,7 @@ export function EnterpriseFooter() {
             </p>
             <div className="mt-9">
               <a
-                href="mailto:hello@nexus-it.com"
+                href="mailto:hello@wavelet.dev"
                 className="inline-flex items-center gap-2 rounded-full bg-white text-gray-950 text-base font-medium px-8 py-4 hover:bg-gray-100 transition-transform hover:scale-[1.03] shadow-[0_20px_60px_rgba(255,255,255,0.15)]"
               >
                 Let's talk →
@@ -82,8 +82,8 @@ export function EnterpriseFooter() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="h-7 w-7 rounded-lg bg-white text-gray-950 flex items-center justify-center text-[11px] font-bold">N</span>
-            <span className="text-sm text-gray-500">© {new Date().getFullYear()} Nexus IT. Crafted with intention.</span>
+            <span className="h-7 w-7 rounded-lg bg-white text-gray-950 flex items-center justify-center text-[11px] font-bold">W</span>
+            <span className="text-sm text-gray-500">© {new Date().getFullYear()} Wavelet. Crafted with intention.</span>
           </div>
           <div className="text-xs text-gray-600 font-mono">v2.0 · status: all systems operational</div>
         </div>

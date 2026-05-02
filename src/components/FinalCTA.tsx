@@ -13,7 +13,7 @@ export function FinalCTA() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="mailto:hello@nexus-it.com"
+              href="mailto:hello@wavelet.dev"
               className="w-full sm:w-auto rounded-full bg-gray-900 text-white text-base font-medium px-8 py-4 hover:bg-gray-800 transition-transform hover:scale-[1.03] shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
             >
               Book a strategy call
@@ -36,8 +36,8 @@ export function SiteFooter() {
     <footer className="border-t border-gray-100 px-4 py-12">
       <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2">
-          <span className="h-6 w-6 rounded-md bg-gray-900 flex items-center justify-center text-white text-[10px] font-bold">N</span>
-          <span className="text-sm text-gray-500">© {new Date().getFullYear()} Nexus IT. All rights reserved.</span>
+          <span className="h-6 w-6 rounded-md bg-gray-900 flex items-center justify-center text-white text-[10px] font-bold">W</span>
+          <span className="text-sm text-gray-500">© {new Date().getFullYear()} Wavelet. All rights reserved.</span>
         </div>
         <nav className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-gray-400">
           <a href="#" className="hover:text-gray-700 transition">Privacy</a>

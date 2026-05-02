@@ -11,16 +11,16 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Nexus IT — Your One-Stop IT Solution Provider" },
+      { title: "Wavelet — Your One-Stop IT Solution Provider" },
       {
         name: "description",
         content:
-          "Scale your business with enterprise-grade IT — digital platforms, growth marketing, Microsoft Cloud, and expert consultancy from one trusted partner.",
+          "Scale your business with Wavelet — enterprise-grade digital platforms, growth marketing, cloud solutions, and expert consultancy.",
       },
-      { property: "og:title", content: "Nexus IT — Your One-Stop IT Solution Provider" },
+      { property: "og:title", content: "Wavelet — Your One-Stop IT Solution Provider" },
       {
         property: "og:description",
-        content: "Digital platforms, growth, enterprise software and IT consultancy — under one roof.",
+        content: "Digital platforms, growth, enterprise software and IT consultancy — all powered by Wavelet.",
       },
     ],
   }),
