@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen font-sans antialiased bg-gray-950 text-white">
+    <div className="min-h-screen font-sans antialiased bg-[#D5EAEC] text-gray-900">
       <main>
         <Hero />
         <StatsBar />

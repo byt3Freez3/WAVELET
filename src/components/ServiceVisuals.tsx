@@ -21,12 +21,12 @@ export function PlatformVisual() {
         </div>
       </div>
       <div className="space-y-3">
-        <div className="rounded-xl bg-gray-900 p-3 aspect-[9/16] flex flex-col justify-between">
-          <div className="h-1.5 w-8 rounded-full bg-white/30 mx-auto" />
+        <div className="rounded-xl bg-white border border-gray-200 shadow-sm p-3 aspect-[9/16] flex flex-col justify-between">
+          <div className="h-1.5 w-8 rounded-full bg-gray-300 mx-auto" />
           <div className="space-y-1.5">
-            <div className="h-1.5 w-full rounded-full bg-white/20" />
-            <div className="h-1.5 w-2/3 rounded-full bg-white/20" />
-            <div className="h-6 rounded-md bg-blue-400/80 mt-2" />
+            <div className="h-1.5 w-full rounded-full bg-gray-200" />
+            <div className="h-1.5 w-2/3 rounded-full bg-gray-200" />
+            <div className="h-6 rounded-md bg-blue-500 mt-2" />
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ export function PlatformVisual() {
 export function GrowthVisual() {
   return (
     <div className="w-full space-y-4">
-      <div className="bg-gray-900/20 border border-white/5 rounded-2xl p-8 backdrop-blur-sm">
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm backdrop-blur-sm">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -45,12 +45,12 @@ export function GrowthVisual() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col gap-1"
         >
-          <span className="text-white font-bold tracking-[0.2em] text-[10px] uppercase opacity-80">Organic Traffic</span>
-          <p className="text-4xl lg:text-5xl font-bold text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">
+          <span className="text-gray-500 font-bold tracking-[0.2em] text-[10px] uppercase">Organic Traffic</span>
+          <p className="text-4xl lg:text-5xl font-bold text-emerald-600 drop-shadow-[0_0_15px_rgba(52,211,153,0.2)]">
             +248%
           </p>
           <div className="mt-2">
-            <span className="rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest">
+            <span className="rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest shadow-sm">
               ↑ 32 this week
             </span>
           </div>

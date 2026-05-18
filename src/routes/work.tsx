@@ -80,7 +80,7 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
       className={cn(
-        "group flex flex-col-reverse lg:flex-row w-full bg-gray-950/40 backdrop-blur-2xl border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_40px_100px_-20px]",
+        "group flex flex-col-reverse lg:flex-row w-full bg-white border border-gray-200 rounded-[2rem] overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-md hover:border-gray-300 shadow-sm",
         project.glowColor
       )}
     >
@@ -94,11 +94,11 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
           ))}
         </div>
         
-        <h3 className="text-3xl lg:text-4xl font-semibold text-white tracking-tight mb-6">
+        <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight mb-6">
           {project.title}
         </h3>
         
-        <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-md">
+        <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-md">
           {project.description}
         </p>
 
@@ -108,7 +108,7 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
             href={project.externalLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors group/link text-sm font-medium"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors group/link text-sm font-medium"
           >
             Visit project site
             <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
@@ -123,7 +123,7 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
       )}>
         {/* Skeleton Loader */}
         {!isImageLoaded && (
-          <div className="absolute inset-0 bg-gray-800 animate-pulse rounded-3xl z-20" />
+          <div className="absolute inset-0 bg-gray-100 animate-pulse rounded-3xl z-20" />
         )}
 
         {/* Project Image */}
@@ -143,11 +143,11 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
             )}
           />
           {/* Dark Overlay for Depth */}
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" />
+          <div className="absolute inset-0 bg-gray-900/5 group-hover:bg-transparent transition-colors duration-700" />
         </motion.div>
 
         {/* Spotlight Effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_60%)] z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.02),transparent_60%)] z-10" />
         
         {/* Metric Badge (Floating on Image) */}
         <motion.div 
@@ -166,21 +166,21 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
         {/* Animated Icon (Miniature Version) */}
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 3 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-20"
         >
-          <div className="h-20 w-20 rounded-2xl bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-2xl">
-            <Icon className="h-10 w-10 text-white/40 stroke-[1.5px]" />
+          <div className="h-20 w-20 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-sm">
+            <Icon className="h-10 w-10 text-gray-500 stroke-[1.5px]" />
           </div>
         </motion.div>
 
         {/* Status Tag */}
-        <div className="absolute bottom-6 right-6 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center gap-2 z-20">
+        <div className="absolute bottom-6 right-6 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-gray-200 flex items-center gap-2 z-20 shadow-sm">
            <span className="relative flex h-2 w-2">
              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
            </span>
-           <span className="text-[10px] uppercase tracking-widest font-bold text-white/60">{project.status}</span>
+           <span className="text-[10px] uppercase tracking-widest font-bold text-gray-600">{project.status}</span>
         </div>
       </div>
     </motion.div>
@@ -189,7 +189,7 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
 
 function WorkPage() {
   return (
-    <div className="min-h-screen bg-gray-950 font-sans antialiased selection:bg-white/10 selection:text-white">
+    <div className="min-h-screen bg-white font-sans antialiased selection:bg-gray-900/10 selection:text-gray-900">
       {/* Navigation moved to __root.tsx */}
       
       <main className="relative">
@@ -207,12 +207,12 @@ function WorkPage() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-32"
           >
-            <span className="inline-block py-1 px-4 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-[0.4em] text-white/40 font-bold mb-8">
+            <span className="inline-block py-1 px-4 rounded-full bg-gray-50 border border-gray-200 text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold mb-8 shadow-sm">
               Success Stories
             </span>
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight text-white leading-[0.9]">
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight text-gray-900 leading-[0.9]">
               Work that drives <br />
-              <span className="text-white/20">revenue.</span>
+              <span className="text-gray-400">revenue.</span>
             </h1>
           </motion.div>
 
@@ -228,18 +228,18 @@ function WorkPage() {
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-64 text-center relative py-40 rounded-[4rem] border border-white/5 bg-white/[0.01] backdrop-blur-3xl overflow-hidden group"
+            className="mt-64 text-center relative py-40 rounded-[4rem] border border-gray-200 bg-gray-50 shadow-sm overflow-hidden group"
           >
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.03),transparent_70%)]" />
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0.02),transparent_70%)]" />
              <div className="relative z-10">
-               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-8 tracking-tight">Ready to build your masterpiece?</h2>
-               <p className="text-gray-500 text-lg sm:text-xl max-w-xl mx-auto mb-12 leading-relaxed">
+               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 tracking-tight">Ready to build your masterpiece?</h2>
+               <p className="text-gray-600 text-lg sm:text-xl max-w-xl mx-auto mb-12 leading-relaxed">
                  We're currently accepting new projects for Q3 2026. Let's create something that stands out.
                </p>
                <motion.a
                  whileTap={{ scale: 0.95 }}
                  href="/contact"
-                 className="inline-flex items-center rounded-full bg-white text-black text-base font-bold px-14 py-5 hover:bg-gray-200 transition-all hover:scale-[1.05] shadow-[0_20px_60px_-10px_rgba(255,255,255,0.2)]"
+                 className="inline-flex items-center rounded-full bg-gray-900 text-white text-base font-bold px-14 py-5 hover:bg-gray-800 transition-all hover:scale-[1.05] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.1)]"
                >
                  Book a Consultation
                </motion.a>

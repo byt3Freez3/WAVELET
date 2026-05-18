@@ -10,19 +10,35 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
-import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WhatWeDoWebMobileAppsRouteImport } from './routes/what-we-do/web-mobile-apps'
+import { Route as WhatWeDoWebHostingRouteImport } from './routes/what-we-do/web-hosting'
+import { Route as WhatWeDoSoftwareServicesRouteImport } from './routes/what-we-do/software-services'
+import { Route as WhatWeDoErpBusinessApplicationsRouteImport } from './routes/what-we-do/erp-business-applications'
+import { Route as WhatWeDoEmailSolutionsRouteImport } from './routes/what-we-do/email-solutions'
+import { Route as WhatWeDoDesignDigitalMarketingRouteImport } from './routes/what-we-do/design-digital-marketing'
+import { Route as WhatWeDoCloudRouteImport } from './routes/what-we-do/cloud'
+import { Route as WhatWeDoBusinessIntelligenceRouteImport } from './routes/what-we-do/business-intelligence'
+import { Route as ServicesSoftwareServicesRouteImport } from './routes/services/software-services'
+import { Route as IndustriesStartupsRouteImport } from './routes/industries/startups'
+import { Route as IndustriesRetailRouteImport } from './routes/industries/retail'
+import { Route as IndustriesManufacturingRouteImport } from './routes/industries/manufacturing'
+import { Route as IndustriesHospitalityRouteImport } from './routes/industries/hospitality'
+import { Route as IndustriesHealthRouteImport } from './routes/industries/health'
+import { Route as IndustriesGlobalGoalsRouteImport } from './routes/industries/global-goals'
+import { Route as IndustriesEducationRouteImport } from './routes/industries/education'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -40,43 +56,256 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatWeDoWebMobileAppsRoute = WhatWeDoWebMobileAppsRouteImport.update({
+  id: '/what-we-do/web-mobile-apps',
+  path: '/what-we-do/web-mobile-apps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoWebHostingRoute = WhatWeDoWebHostingRouteImport.update({
+  id: '/what-we-do/web-hosting',
+  path: '/what-we-do/web-hosting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoSoftwareServicesRoute =
+  WhatWeDoSoftwareServicesRouteImport.update({
+    id: '/what-we-do/software-services',
+    path: '/what-we-do/software-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoErpBusinessApplicationsRoute =
+  WhatWeDoErpBusinessApplicationsRouteImport.update({
+    id: '/what-we-do/erp-business-applications',
+    path: '/what-we-do/erp-business-applications',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoEmailSolutionsRoute = WhatWeDoEmailSolutionsRouteImport.update({
+  id: '/what-we-do/email-solutions',
+  path: '/what-we-do/email-solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoDesignDigitalMarketingRoute =
+  WhatWeDoDesignDigitalMarketingRouteImport.update({
+    id: '/what-we-do/design-digital-marketing',
+    path: '/what-we-do/design-digital-marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoCloudRoute = WhatWeDoCloudRouteImport.update({
+  id: '/what-we-do/cloud',
+  path: '/what-we-do/cloud',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoBusinessIntelligenceRoute =
+  WhatWeDoBusinessIntelligenceRouteImport.update({
+    id: '/what-we-do/business-intelligence',
+    path: '/what-we-do/business-intelligence',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesSoftwareServicesRoute =
+  ServicesSoftwareServicesRouteImport.update({
+    id: '/services/software-services',
+    path: '/services/software-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IndustriesStartupsRoute = IndustriesStartupsRouteImport.update({
+  id: '/industries/startups',
+  path: '/industries/startups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRetailRoute = IndustriesRetailRouteImport.update({
+  id: '/industries/retail',
+  path: '/industries/retail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesManufacturingRoute = IndustriesManufacturingRouteImport.update({
+  id: '/industries/manufacturing',
+  path: '/industries/manufacturing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesHospitalityRoute = IndustriesHospitalityRouteImport.update({
+  id: '/industries/hospitality',
+  path: '/industries/hospitality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesHealthRoute = IndustriesHealthRouteImport.update({
+  id: '/industries/health',
+  path: '/industries/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesGlobalGoalsRoute = IndustriesGlobalGoalsRouteImport.update({
+  id: '/industries/global-goals',
+  path: '/industries/global-goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesEducationRoute = IndustriesEducationRouteImport.update({
+  id: '/industries/education',
+  path: '/industries/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/team': typeof TeamRoute
   '/work': typeof WorkRoute
+  '/industries/education': typeof IndustriesEducationRoute
+  '/industries/global-goals': typeof IndustriesGlobalGoalsRoute
+  '/industries/health': typeof IndustriesHealthRoute
+  '/industries/hospitality': typeof IndustriesHospitalityRoute
+  '/industries/manufacturing': typeof IndustriesManufacturingRoute
+  '/industries/retail': typeof IndustriesRetailRoute
+  '/industries/startups': typeof IndustriesStartupsRoute
+  '/services/software-services': typeof ServicesSoftwareServicesRoute
+  '/what-we-do/business-intelligence': typeof WhatWeDoBusinessIntelligenceRoute
+  '/what-we-do/cloud': typeof WhatWeDoCloudRoute
+  '/what-we-do/design-digital-marketing': typeof WhatWeDoDesignDigitalMarketingRoute
+  '/what-we-do/email-solutions': typeof WhatWeDoEmailSolutionsRoute
+  '/what-we-do/erp-business-applications': typeof WhatWeDoErpBusinessApplicationsRoute
+  '/what-we-do/software-services': typeof WhatWeDoSoftwareServicesRoute
+  '/what-we-do/web-hosting': typeof WhatWeDoWebHostingRoute
+  '/what-we-do/web-mobile-apps': typeof WhatWeDoWebMobileAppsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/team': typeof TeamRoute
   '/work': typeof WorkRoute
+  '/industries/education': typeof IndustriesEducationRoute
+  '/industries/global-goals': typeof IndustriesGlobalGoalsRoute
+  '/industries/health': typeof IndustriesHealthRoute
+  '/industries/hospitality': typeof IndustriesHospitalityRoute
+  '/industries/manufacturing': typeof IndustriesManufacturingRoute
+  '/industries/retail': typeof IndustriesRetailRoute
+  '/industries/startups': typeof IndustriesStartupsRoute
+  '/services/software-services': typeof ServicesSoftwareServicesRoute
+  '/what-we-do/business-intelligence': typeof WhatWeDoBusinessIntelligenceRoute
+  '/what-we-do/cloud': typeof WhatWeDoCloudRoute
+  '/what-we-do/design-digital-marketing': typeof WhatWeDoDesignDigitalMarketingRoute
+  '/what-we-do/email-solutions': typeof WhatWeDoEmailSolutionsRoute
+  '/what-we-do/erp-business-applications': typeof WhatWeDoErpBusinessApplicationsRoute
+  '/what-we-do/software-services': typeof WhatWeDoSoftwareServicesRoute
+  '/what-we-do/web-hosting': typeof WhatWeDoWebHostingRoute
+  '/what-we-do/web-mobile-apps': typeof WhatWeDoWebMobileAppsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/team': typeof TeamRoute
   '/work': typeof WorkRoute
+  '/industries/education': typeof IndustriesEducationRoute
+  '/industries/global-goals': typeof IndustriesGlobalGoalsRoute
+  '/industries/health': typeof IndustriesHealthRoute
+  '/industries/hospitality': typeof IndustriesHospitalityRoute
+  '/industries/manufacturing': typeof IndustriesManufacturingRoute
+  '/industries/retail': typeof IndustriesRetailRoute
+  '/industries/startups': typeof IndustriesStartupsRoute
+  '/services/software-services': typeof ServicesSoftwareServicesRoute
+  '/what-we-do/business-intelligence': typeof WhatWeDoBusinessIntelligenceRoute
+  '/what-we-do/cloud': typeof WhatWeDoCloudRoute
+  '/what-we-do/design-digital-marketing': typeof WhatWeDoDesignDigitalMarketingRoute
+  '/what-we-do/email-solutions': typeof WhatWeDoEmailSolutionsRoute
+  '/what-we-do/erp-business-applications': typeof WhatWeDoErpBusinessApplicationsRoute
+  '/what-we-do/software-services': typeof WhatWeDoSoftwareServicesRoute
+  '/what-we-do/web-hosting': typeof WhatWeDoWebHostingRoute
+  '/what-we-do/web-mobile-apps': typeof WhatWeDoWebMobileAppsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/services' | '/work'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/team'
+    | '/work'
+    | '/industries/education'
+    | '/industries/global-goals'
+    | '/industries/health'
+    | '/industries/hospitality'
+    | '/industries/manufacturing'
+    | '/industries/retail'
+    | '/industries/startups'
+    | '/services/software-services'
+    | '/what-we-do/business-intelligence'
+    | '/what-we-do/cloud'
+    | '/what-we-do/design-digital-marketing'
+    | '/what-we-do/email-solutions'
+    | '/what-we-do/erp-business-applications'
+    | '/what-we-do/software-services'
+    | '/what-we-do/web-hosting'
+    | '/what-we-do/web-mobile-apps'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services' | '/work'
-  id: '__root__' | '/' | '/about' | '/contact' | '/services' | '/work'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/team'
+    | '/work'
+    | '/industries/education'
+    | '/industries/global-goals'
+    | '/industries/health'
+    | '/industries/hospitality'
+    | '/industries/manufacturing'
+    | '/industries/retail'
+    | '/industries/startups'
+    | '/services/software-services'
+    | '/what-we-do/business-intelligence'
+    | '/what-we-do/cloud'
+    | '/what-we-do/design-digital-marketing'
+    | '/what-we-do/email-solutions'
+    | '/what-we-do/erp-business-applications'
+    | '/what-we-do/software-services'
+    | '/what-we-do/web-hosting'
+    | '/what-we-do/web-mobile-apps'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/team'
+    | '/work'
+    | '/industries/education'
+    | '/industries/global-goals'
+    | '/industries/health'
+    | '/industries/hospitality'
+    | '/industries/manufacturing'
+    | '/industries/retail'
+    | '/industries/startups'
+    | '/services/software-services'
+    | '/what-we-do/business-intelligence'
+    | '/what-we-do/cloud'
+    | '/what-we-do/design-digital-marketing'
+    | '/what-we-do/email-solutions'
+    | '/what-we-do/erp-business-applications'
+    | '/what-we-do/software-services'
+    | '/what-we-do/web-hosting'
+    | '/what-we-do/web-mobile-apps'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  TeamRoute: typeof TeamRoute
   WorkRoute: typeof WorkRoute
+  IndustriesEducationRoute: typeof IndustriesEducationRoute
+  IndustriesGlobalGoalsRoute: typeof IndustriesGlobalGoalsRoute
+  IndustriesHealthRoute: typeof IndustriesHealthRoute
+  IndustriesHospitalityRoute: typeof IndustriesHospitalityRoute
+  IndustriesManufacturingRoute: typeof IndustriesManufacturingRoute
+  IndustriesRetailRoute: typeof IndustriesRetailRoute
+  IndustriesStartupsRoute: typeof IndustriesStartupsRoute
+  ServicesSoftwareServicesRoute: typeof ServicesSoftwareServicesRoute
+  WhatWeDoBusinessIntelligenceRoute: typeof WhatWeDoBusinessIntelligenceRoute
+  WhatWeDoCloudRoute: typeof WhatWeDoCloudRoute
+  WhatWeDoDesignDigitalMarketingRoute: typeof WhatWeDoDesignDigitalMarketingRoute
+  WhatWeDoEmailSolutionsRoute: typeof WhatWeDoEmailSolutionsRoute
+  WhatWeDoErpBusinessApplicationsRoute: typeof WhatWeDoErpBusinessApplicationsRoute
+  WhatWeDoSoftwareServicesRoute: typeof WhatWeDoSoftwareServicesRoute
+  WhatWeDoWebHostingRoute: typeof WhatWeDoWebHostingRoute
+  WhatWeDoWebMobileAppsRoute: typeof WhatWeDoWebMobileAppsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -88,11 +317,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -116,6 +345,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-do/web-mobile-apps': {
+      id: '/what-we-do/web-mobile-apps'
+      path: '/what-we-do/web-mobile-apps'
+      fullPath: '/what-we-do/web-mobile-apps'
+      preLoaderRoute: typeof WhatWeDoWebMobileAppsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/web-hosting': {
+      id: '/what-we-do/web-hosting'
+      path: '/what-we-do/web-hosting'
+      fullPath: '/what-we-do/web-hosting'
+      preLoaderRoute: typeof WhatWeDoWebHostingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/software-services': {
+      id: '/what-we-do/software-services'
+      path: '/what-we-do/software-services'
+      fullPath: '/what-we-do/software-services'
+      preLoaderRoute: typeof WhatWeDoSoftwareServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/erp-business-applications': {
+      id: '/what-we-do/erp-business-applications'
+      path: '/what-we-do/erp-business-applications'
+      fullPath: '/what-we-do/erp-business-applications'
+      preLoaderRoute: typeof WhatWeDoErpBusinessApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/email-solutions': {
+      id: '/what-we-do/email-solutions'
+      path: '/what-we-do/email-solutions'
+      fullPath: '/what-we-do/email-solutions'
+      preLoaderRoute: typeof WhatWeDoEmailSolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/design-digital-marketing': {
+      id: '/what-we-do/design-digital-marketing'
+      path: '/what-we-do/design-digital-marketing'
+      fullPath: '/what-we-do/design-digital-marketing'
+      preLoaderRoute: typeof WhatWeDoDesignDigitalMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/cloud': {
+      id: '/what-we-do/cloud'
+      path: '/what-we-do/cloud'
+      fullPath: '/what-we-do/cloud'
+      preLoaderRoute: typeof WhatWeDoCloudRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/business-intelligence': {
+      id: '/what-we-do/business-intelligence'
+      path: '/what-we-do/business-intelligence'
+      fullPath: '/what-we-do/business-intelligence'
+      preLoaderRoute: typeof WhatWeDoBusinessIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/software-services': {
+      id: '/services/software-services'
+      path: '/services/software-services'
+      fullPath: '/services/software-services'
+      preLoaderRoute: typeof ServicesSoftwareServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/startups': {
+      id: '/industries/startups'
+      path: '/industries/startups'
+      fullPath: '/industries/startups'
+      preLoaderRoute: typeof IndustriesStartupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/retail': {
+      id: '/industries/retail'
+      path: '/industries/retail'
+      fullPath: '/industries/retail'
+      preLoaderRoute: typeof IndustriesRetailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/manufacturing': {
+      id: '/industries/manufacturing'
+      path: '/industries/manufacturing'
+      fullPath: '/industries/manufacturing'
+      preLoaderRoute: typeof IndustriesManufacturingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/hospitality': {
+      id: '/industries/hospitality'
+      path: '/industries/hospitality'
+      fullPath: '/industries/hospitality'
+      preLoaderRoute: typeof IndustriesHospitalityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/health': {
+      id: '/industries/health'
+      path: '/industries/health'
+      fullPath: '/industries/health'
+      preLoaderRoute: typeof IndustriesHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/global-goals': {
+      id: '/industries/global-goals'
+      path: '/industries/global-goals'
+      fullPath: '/industries/global-goals'
+      preLoaderRoute: typeof IndustriesGlobalGoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/education': {
+      id: '/industries/education'
+      path: '/industries/education'
+      fullPath: '/industries/education'
+      preLoaderRoute: typeof IndustriesEducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -123,8 +464,24 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  TeamRoute: TeamRoute,
   WorkRoute: WorkRoute,
+  IndustriesEducationRoute: IndustriesEducationRoute,
+  IndustriesGlobalGoalsRoute: IndustriesGlobalGoalsRoute,
+  IndustriesHealthRoute: IndustriesHealthRoute,
+  IndustriesHospitalityRoute: IndustriesHospitalityRoute,
+  IndustriesManufacturingRoute: IndustriesManufacturingRoute,
+  IndustriesRetailRoute: IndustriesRetailRoute,
+  IndustriesStartupsRoute: IndustriesStartupsRoute,
+  ServicesSoftwareServicesRoute: ServicesSoftwareServicesRoute,
+  WhatWeDoBusinessIntelligenceRoute: WhatWeDoBusinessIntelligenceRoute,
+  WhatWeDoCloudRoute: WhatWeDoCloudRoute,
+  WhatWeDoDesignDigitalMarketingRoute: WhatWeDoDesignDigitalMarketingRoute,
+  WhatWeDoEmailSolutionsRoute: WhatWeDoEmailSolutionsRoute,
+  WhatWeDoErpBusinessApplicationsRoute: WhatWeDoErpBusinessApplicationsRoute,
+  WhatWeDoSoftwareServicesRoute: WhatWeDoSoftwareServicesRoute,
+  WhatWeDoWebHostingRoute: WhatWeDoWebHostingRoute,
+  WhatWeDoWebMobileAppsRoute: WhatWeDoWebMobileAppsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

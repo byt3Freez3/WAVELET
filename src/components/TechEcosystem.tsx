@@ -7,7 +7,7 @@ const RazorpayLogo = () => (
 );
 
 const AWSLogo = () => (
-  <svg viewBox="0 0 24 24" className="h-8 w-8 text-white group-hover:text-orange-400 transition-colors duration-300" fill="currentColor">
+  <svg viewBox="0 0 24 24" className="h-8 w-8 text-gray-900 group-hover:text-orange-400 transition-colors duration-300" fill="currentColor">
     <path d="M18.1 14.1c-1.4 1-3.6 1.6-5.8 1.6-3.1 0-5.8-1.4-7.3-3.6-.3-.4-.1-.8.4-1l1.1-.6c.4-.2.9-.1 1.1.3 1.1 1.4 2.9 2.4 4.8 2.4 1.6 0 3.2-.7 4.4-1.8.4-.4.8-.3 1.1.1l.8 1.1c.3.5.1 1-.5 1.5z" />
   </svg>
 );
@@ -55,14 +55,14 @@ const stack = [
 
 export function TechEcosystem() {
   return (
-    <section className="px-4 py-32 bg-gray-950 overflow-hidden">
+    <section className="px-4 py-8 sm:py-12 bg-transparent overflow-hidden">
       <div className="mx-auto max-w-5xl">
-        <div className="text-center mb-24 max-w-2xl mx-auto">
+        <div className="text-center mb-6 sm:mb-8 max-w-2xl mx-auto">
           <span className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold">Ecosystem Sync</span>
-          <h2 className="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
+          <h2 className="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.05]">
             Seamlessly integrating with your
             <br />
-            <span className="text-white/20">favorite modern stack.</span>
+            <span className="text-gray-400">favorite modern stack.</span>
           </h2>
         </div>
 
@@ -78,12 +78,12 @@ export function TechEcosystem() {
                 delay: i * 0.1,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className={`group w-28 h-28 sm:w-32 sm:h-32 rounded-[2rem] bg-gray-900/40 backdrop-blur-xl border border-white/10 flex flex-col items-center justify-center gap-3 transition-all duration-500 hover:-translate-y-3 hover:border-white/20 ${s.glow}`}
+              className={`group w-28 h-28 sm:w-32 sm:h-32 rounded-[2rem] bg-white backdrop-blur-xl border border-gray-200 flex flex-col items-center justify-center gap-3 transition-all duration-500 hover:-translate-y-3 hover:border-gray-300 shadow-md hover:shadow-lg ${s.glow}`}
             >
               <div className="h-12 w-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
                 {s.logo}
               </div>
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest group-hover:text-white transition-colors duration-300">{s.name}</span>
+              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-900 transition-colors duration-300">{s.name}</span>
             </motion.div>
           ))}
         </div>

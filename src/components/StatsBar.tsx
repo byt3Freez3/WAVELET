@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export function StatsBar() {
   return (
-    <section className="relative px-4 py-32 overflow-hidden bg-gray-950">
+    <section className="relative px-4 py-8 sm:py-12 overflow-hidden bg-transparent">
       {/* Cinematic Ambient Glow */}
       <div
         aria-hidden
@@ -25,13 +25,13 @@ export function StatsBar() {
         className="pointer-events-none absolute inset-0 -z-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
       />
 
-      <div className="relative mx-auto max-w-6xl">
-        <div className="text-center mb-24">
+      <div className="relative mx-auto max-w-6xl bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-lg z-10">
+        <div className="text-center mb-6 sm:mb-8">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,9 +45,9 @@ export function StatsBar() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-white"
+            className="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900"
           >
-            Performance you can <span className="text-white/40 italic">trust</span>.
+            Performance you can <span className="text-gray-400 italic">trust</span>.
           </motion.h2>
         </div>
 
@@ -59,12 +59,12 @@ export function StatsBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center md:px-12 md:border-r border-white/5 last:border-r-0"
+              className="text-center md:px-12 md:border-r border-gray-200 last:border-r-0"
             >
-              <div className="text-7xl sm:text-8xl lg:text-9xl font-semibold tracking-tighter text-white">
+              <div className="text-7xl sm:text-8xl lg:text-9xl font-semibold tracking-tighter text-gray-900">
                 {s.value}
               </div>
-              <p className="mt-6 text-sm font-bold text-white uppercase tracking-widest">{s.label}</p>
+              <p className="mt-6 text-sm font-bold text-gray-900 uppercase tracking-widest">{s.label}</p>
               <p className="mt-2 text-xs text-gray-500 uppercase tracking-widest font-medium">{s.sub}</p>
             </motion.div>
           ))}

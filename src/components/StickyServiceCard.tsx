@@ -26,7 +26,7 @@ export function StickyServiceCard({ data, index, total }: Props) {
     <div className="w-full">
       <div
         className={cn(
-          "relative w-full rounded-[2.5rem] p-8 sm:p-12 lg:p-16 transition-all duration-700 backdrop-blur-2xl border border-white/10",
+          "relative w-full rounded-[2.5rem] p-8 sm:p-12 lg:p-16 transition-all duration-700 backdrop-blur-2xl border border-gray-200",
           data.gradient,
           data.glow
         )}
@@ -37,11 +37,11 @@ export function StickyServiceCard({ data, index, total }: Props) {
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/5 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold text-white border border-white/10 uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gray-50 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold text-gray-900 border border-gray-200 uppercase tracking-widest shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: data.accent }} />
             Phase {data.step}
           </span>
-          <span className="hidden sm:inline-flex items-center rounded-full bg-white/5 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-gray-400 border border-white/10 uppercase tracking-widest">
+          <span className="hidden sm:inline-flex items-center rounded-full bg-gray-50 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-gray-500 border border-gray-200 uppercase tracking-widest shadow-sm">
             {data.eyebrow}
           </span>
         </div>
@@ -50,17 +50,17 @@ export function StickyServiceCard({ data, index, total }: Props) {
         <div className="flex flex-col lg:flex-row w-full gap-10 lg:gap-14 items-center">
           {/* Text Column */}
           <div className="w-full lg:w-2/5 space-y-6">
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.05]">
               {data.title}
             </h3>
-            <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-md">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-md">
               {data.description}
             </p>
             <ul className="space-y-3 pt-4">
               {data.bullets.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-sm font-medium text-gray-300">
+                <li key={b} className="flex items-center gap-3 text-sm font-medium text-gray-600">
                   <span
-                    className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-white"
+                    className="flex h-5 w-5 items-center justify-center rounded-full bg-gray-200 text-gray-900"
                     aria-hidden
                   >
                     <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
@@ -75,9 +75,9 @@ export function StickyServiceCard({ data, index, total }: Props) {
 
           {/* Visual Column */}
           <div className="w-full lg:w-3/5 h-64 sm:h-80 lg:h-auto min-h-[250px] lg:min-h-[400px]">
-            <div className="h-full rounded-3xl bg-black/40 backdrop-blur-xl border border-white/5 p-6 sm:p-8 flex items-center justify-center relative overflow-hidden group">
+            <div className="h-full rounded-3xl bg-gray-50 backdrop-blur-xl border border-gray-100 shadow-sm p-6 sm:p-8 flex items-center justify-center relative overflow-hidden group">
               {/* Internal glow */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_70%)] group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.02),transparent_70%)] group-hover:opacity-100 transition-opacity duration-700" />
               {data.visual}
             </div>
           </div>

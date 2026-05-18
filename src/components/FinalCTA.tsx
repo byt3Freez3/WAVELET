@@ -41,12 +41,12 @@ export function SiteFooter() {
           <span className="h-6 w-6 rounded-md bg-gray-900 flex items-center justify-center text-white text-[10px] font-bold">W</span>
           <span className="text-sm text-gray-500">© {new Date().getFullYear()} Wavelet. All rights reserved.</span>
         </div>
-        <nav className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-gray-400">
-          <Link to="#" className="hover:text-gray-700 transition">Privacy</Link>
-          <Link to="#" className="hover:text-gray-700 transition">Terms</Link>
-          <Link to="#" className="hover:text-gray-700 transition">Security</Link>
-          <Link to="#" className="hover:text-gray-700 transition">Careers</Link>
-          <Link to="/contact" className="hover:text-gray-700 transition">Contact</Link>
+        <nav className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-gray-600">
+          <Link to="/" className="hover:text-gray-900 transition">Privacy</Link>
+          <Link to="/" className="hover:text-gray-900 transition">Terms</Link>
+          <Link to="/" className="hover:text-gray-900 transition">Security</Link>
+          <Link to="/" className="hover:text-gray-900 transition">Careers</Link>
+          <Link to="/contact" className="hover:text-gray-900 transition">Contact</Link>
         </nav>
       </div>
     </footer>
