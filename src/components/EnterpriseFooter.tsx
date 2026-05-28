@@ -49,7 +49,7 @@ export interface EnterpriseFooterProps {
 
 export function EnterpriseFooter({ hideCta = false }: EnterpriseFooterProps = {}) {
   return (
-    <footer className="relative px-4 pt-8 mt-8 sm:pt-12 sm:mt-12 pb-10 bg-gray-50 text-gray-600 overflow-hidden">
+    <footer className="relative px-4 pt-8 mt-8 pb-10 bg-transparent text-gray-600 overflow-hidden">
       {/* Glow */}
       <div
         aria-hidden

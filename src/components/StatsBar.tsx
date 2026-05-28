@@ -61,11 +61,11 @@ export function StatsBar() {
               transition={{ delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-center md:px-12 md:border-r border-gray-200 last:border-r-0"
             >
-              <div className="text-7xl sm:text-8xl lg:text-9xl font-semibold tracking-tighter text-gray-900">
+              <div className="text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tighter text-gray-900">
                 {s.value}
               </div>
-              <p className="mt-6 text-sm font-bold text-gray-900 uppercase tracking-widest">{s.label}</p>
-              <p className="mt-2 text-xs text-gray-500 uppercase tracking-widest font-medium">{s.sub}</p>
+              <p className="mt-5 text-sm sm:text-base font-bold text-gray-900 uppercase tracking-widest">{s.label}</p>
+              <p className="mt-2 text-xs sm:text-sm text-gray-500 uppercase tracking-wider font-semibold">{s.sub}</p>
             </motion.div>
           ))}
         </div>

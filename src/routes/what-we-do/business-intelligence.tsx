@@ -179,7 +179,7 @@ function BusinessIntelligencePage() {
 
       <main className="pt-24">
         {/* 1. Hero Section */}
-        <section className="relative px-4 pt-20 pb-32 overflow-hidden bg-[#b0c5e6]">
+        <section className="relative px-4 pt-16 pb-20 overflow-hidden bg-[#b0c5e6]">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -20 }}
@@ -264,7 +264,7 @@ function BusinessIntelligencePage() {
           {/* Stats Grid */}
           <motion.div 
             {...getGridContainer()}
-            className="max-w-6xl mx-auto mt-32 grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="max-w-6xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {stats.map((stat, i) => (
               <motion.div
@@ -310,7 +310,7 @@ function BusinessIntelligencePage() {
         {/* 3. Service Deep-Dive */}
         <motion.section 
           {...getSectionReveal()}
-          className="py-32 px-4"
+          className="py-16 lg:py-20 px-4"
         >
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20">
@@ -364,7 +364,7 @@ function BusinessIntelligencePage() {
         {/* 4. Industry Grid */}
         <motion.section 
           {...getSectionReveal()}
-          className="py-32 px-4 bg-gray-50"
+          className="py-16 lg:py-20 px-4 bg-gray-50"
         >
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20">
@@ -407,7 +407,7 @@ function BusinessIntelligencePage() {
         {/* 5. Capabilities Accordion */}
         <motion.section 
           {...getSectionReveal()}
-          className="py-32 px-4"
+          className="py-16 lg:py-20 px-4"
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold mb-16 text-center">Core Implementation Capabilities</h2>
@@ -452,7 +452,7 @@ function BusinessIntelligencePage() {
         {/* 6. FAQ Section */}
         <motion.section 
           {...getSectionReveal()}
-          className="py-32 px-4 bg-gray-50"
+          className="py-16 lg:py-20 px-4 bg-gray-50"
         >
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-[#111111] mb-16 text-center">Frequently Asked Questions</h2>
@@ -492,7 +492,7 @@ function BusinessIntelligencePage() {
         {/* 7. Let's Connect Form */}
         <motion.section 
           {...getSectionReveal()}
-          className="py-32 px-4"
+          className="py-16 lg:py-20 px-4"
         >
           <div className="max-w-4xl mx-auto bg-[#111111] rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
             <div className="absolute inset-0 opacity-10" style={{ background: "radial-gradient(circle at 100% 0%, white 0%, transparent 50%)" }} />

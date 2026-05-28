@@ -86,7 +86,7 @@ export const TeamLanding = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-48 overflow-hidden bg-[#0B1120]">
+      <section className="relative pt-24 pb-24 overflow-hidden bg-[#0B1120]">
         {/* Subtle Background Glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/10 rounded-full blur-[120px]" />
@@ -144,7 +144,7 @@ export const TeamLanding = () => {
       </section>
 
       {/* 3. Colorful Offerings Grid */}
-      <section className="py-32 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container px-4 mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Core Offerings</h2>
@@ -179,7 +179,7 @@ export const TeamLanding = () => {
       </section>
 
       {/* 4. Benefits Section */}
-      <section className="py-32 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mb-20">
             <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-indigo-600 mb-6">Grow with Team Computers</h2>
@@ -220,7 +220,7 @@ export const TeamLanding = () => {
       </section>
 
       {/* 6. Contact / CTA Section */}
-      <section className="py-32 bg-white relative">
+      <section className="py-16 lg:py-20 bg-white relative">
         <div className="container px-4 mx-auto">
           <div className="bg-[#0B1120] rounded-[3rem] overflow-hidden shadow-2xl relative flex flex-col lg:flex-row">
             {/* Left Side Content */}

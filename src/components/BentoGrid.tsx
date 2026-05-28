@@ -108,7 +108,7 @@ function CheckoutSuccess() {
           </div>
           <div className="flex-1 min-w-0">
             <div className="text-[14px] font-bold text-gray-900 uppercase tracking-wider">Payment Success</div>
-            <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-1">$4,200.00 confirmed</div>
+            <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-1">₹4,200.00 confirmed</div>
           </div>
         </div>
         

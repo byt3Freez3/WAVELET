@@ -75,7 +75,7 @@ function RootComponent() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="min-h-screen bg-white font-sans antialiased text-gray-900">
+    <div className="min-h-screen bg-[#F1F8E9] font-sans antialiased text-gray-900">
       <SiteHeader />
       
       {/* Tactile Film Grain Overlay */}

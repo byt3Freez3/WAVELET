@@ -91,7 +91,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
     <div className="min-h-screen bg-white font-sans antialiased selection:bg-blue-500/10 selection:text-blue-600">
       
       {/* 1. Hero Section */}
-      <section className={`relative pt-32 pb-48 px-4 overflow-hidden text-center transition-colors duration-500 ${data.heroBg || 'bg-gray-900'}`}>
+      <section className={`relative pt-24 pb-24 px-4 overflow-hidden text-center transition-colors duration-500 ${data.heroBg || 'bg-gray-900'}`}>
         {/* Glow - Only show on dark theme or subtle on light */}
         {!isHeroLight && (
           <div className="absolute inset-0 -z-0 opacity-30" style={{ background: "radial-gradient(circle at 50% 50%, oklch(0.4 0.15 260 / 0.5) 0%, transparent 70%)" }} />
@@ -155,7 +155,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
       {/* 3. Sub-Services Grid */}
       <motion.section 
         {...getSectionReveal()}
-        className="bg-white py-32 px-4 mt-20"
+        className="bg-white py-16 lg:py-20 px-4 mt-20"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div 
@@ -192,7 +192,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
       {/* 4. Transforming IT (Media) */}
       <motion.section 
         {...getSectionReveal()}
-        className="py-32 px-4 bg-gray-50"
+        className="py-16 lg:py-20 px-4 bg-gray-50"
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 text-center tracking-tight">Transforming IT Ecosystems</h2>
@@ -248,7 +248,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
       {/* 5. Unlock the Future (Features) */}
       <motion.section 
         {...getSectionReveal()}
-        className="py-32 px-4"
+        className="py-16 lg:py-20 px-4"
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-20 text-center tracking-tight">Unlock the Future</h2>
@@ -291,7 +291,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
       {/* 7. FAQ & Contact Integration */}
       <motion.section 
         {...getSectionReveal()}
-        className="py-32 px-4 bg-white"
+        className="py-16 lg:py-20 px-4 bg-white"
       >
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">Frequently Asked Questions</h2>

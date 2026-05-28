@@ -80,7 +80,7 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
       className={cn(
-        "group flex flex-col-reverse lg:flex-row w-full bg-white border border-gray-200 rounded-[2rem] overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-md hover:border-gray-300 shadow-sm",
+        "group flex flex-col-reverse lg:flex-row w-full bg-white border border-gray-200 rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-xl",
         project.glowColor
       )}
     >
@@ -118,42 +118,45 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
 
       {/* Visual Side */}
       <div className={cn(
-        "w-full lg:w-1/2 min-h-[300px] sm:min-h-[400px] relative overflow-hidden flex items-center justify-center transition-all duration-700",
+        "w-full lg:w-1/2 aspect-[16/9] lg:aspect-auto min-h-[300px] lg:min-h-[400px] relative overflow-hidden flex items-center justify-center bg-gray-50",
         project.iconGlow
       )}>
         {/* Skeleton Loader */}
         {!isImageLoaded && (
-          <div className="absolute inset-0 bg-gray-100 animate-pulse rounded-3xl z-20" />
+          <div className="absolute inset-0 bg-gray-100 animate-pulse z-20" />
         )}
 
         {/* Project Image */}
         <motion.div 
-          initial={{ scale: 1.1, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 w-full h-full flex items-center justify-center p-4 lg:p-8"
         >
           <img 
             src={project.image} 
             alt={project.title}
             onLoad={() => setIsImageLoaded(true)}
+            ref={(img) => {
+              if (img?.complete) setIsImageLoaded(true);
+            }}
             className={cn(
-              "w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105",
+              "w-full h-full object-contain object-center transition-opacity duration-700 ease-out",
               isImageLoaded ? "opacity-100 blur-0" : "opacity-0 blur-md"
             )}
           />
           {/* Dark Overlay for Depth */}
-          <div className="absolute inset-0 bg-gray-900/5 group-hover:bg-transparent transition-colors duration-700" />
+          <div className="absolute inset-0 bg-gray-900/5 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
         </motion.div>
 
         {/* Spotlight Effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.02),transparent_60%)] z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.02),transparent_60%)] z-10 pointer-events-none" />
         
         {/* Metric Badge (Floating on Image) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{ y: -5, scale: 1.05 }}
+          whileHover={{ y: -5 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className={cn(
             "absolute top-8 left-8 z-30 px-5 py-2 rounded-full backdrop-blur-xl border text-[10px] font-bold uppercase tracking-widest shadow-xl transition-all duration-500",
@@ -165,9 +168,9 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
 
         {/* Animated Icon (Miniature Version) */}
         <motion.div 
-          whileHover={{ scale: 1.1, rotate: 3 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-20"
+          className="absolute inset-0 m-auto h-20 w-20 z-20"
         >
           <div className="h-20 w-20 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-sm">
             <Icon className="h-10 w-10 text-gray-500 stroke-[1.5px]" />
@@ -189,7 +192,7 @@ function CaseStudyCard({ project, index }: { project: typeof projects[0]; index:
 
 function WorkPage() {
   return (
-    <div className="min-h-screen bg-white font-sans antialiased selection:bg-gray-900/10 selection:text-gray-900">
+    <div className="min-h-screen bg-[#FFFDDB] font-sans antialiased selection:bg-gray-900/10 selection:text-gray-900">
       {/* Navigation moved to __root.tsx */}
       
       <main className="relative">
@@ -205,9 +208,9 @@ function WorkPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-32"
+            className="text-center mb-16"
           >
-            <span className="inline-block py-1 px-4 rounded-full bg-gray-50 border border-gray-200 text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold mb-8 shadow-sm">
+            <span className="inline-block py-1 px-4 rounded-none bg-gray-50 border border-gray-200 text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold mb-8 shadow-sm">
               Success Stories
             </span>
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight text-gray-900 leading-[0.9]">
@@ -228,7 +231,7 @@ function WorkPage() {
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-64 text-center relative py-40 rounded-[4rem] border border-gray-200 bg-gray-50 shadow-sm overflow-hidden group"
+            className="mt-24 text-center relative py-20 rounded-none border border-gray-200 bg-gray-50 shadow-sm overflow-hidden group"
           >
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0.02),transparent_70%)]" />
              <div className="relative z-10">
@@ -239,7 +242,7 @@ function WorkPage() {
                <motion.a
                  whileTap={{ scale: 0.95 }}
                  href="/contact"
-                 className="inline-flex items-center rounded-full bg-gray-900 text-white text-base font-bold px-14 py-5 hover:bg-gray-800 transition-all hover:scale-[1.05] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.1)]"
+                 className="inline-flex items-center rounded-none bg-gray-900 text-white text-base font-bold px-14 py-5 hover:bg-gray-800 transition-all hover:scale-[1.05] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.1)]"
                >
                  Book a Consultation
                </motion.a>

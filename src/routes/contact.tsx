@@ -42,9 +42,9 @@ function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans antialiased selection:bg-gray-900/10 selection:text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#EEEEFF] font-sans antialiased selection:bg-gray-900/10 selection:text-gray-900 overflow-x-hidden">
       
-      <main className="relative pt-32 sm:pt-40 pb-16 lg:pb-32 px-4 sm:px-6 overflow-x-hidden">
+      <main className="relative pt-24 sm:pt-32 pb-16 px-4 sm:px-6 overflow-x-hidden">
         {/* Ambient Glows */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-600/5 blur-[120px] rounded-full -z-10" />
@@ -134,15 +134,15 @@ function ContactPage() {
               className="w-full lg:w-[40%] flex flex-col gap-6"
             >
               {/* Email Card */}
-              <div className="bg-white border border-gray-200 shadow-sm p-10 rounded-[2.5rem] hover:border-blue-300 hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.1)] transition-all group flex flex-col justify-center min-h-[160px]">
+              <a href="mailto:support@wavelet.live" className="block bg-white border border-gray-200 shadow-sm p-10 rounded-[2.5rem] hover:border-blue-300 hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.1)] transition-all group flex flex-col justify-center min-h-[160px] cursor-pointer">
                 <div className="flex items-center gap-4 mb-4">
                    <div className="h-10 w-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
                      <Mail className="h-5 w-5" />
                    </div>
                    <span className="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold">Email Us</span>
                 </div>
-                <p className="text-2xl font-semibold text-gray-900 tracking-tight">hello@wavelet.dev</p>
-              </div>
+                <p className="text-2xl font-semibold text-gray-900 tracking-tight">support@wavelet.live</p>
+              </a>
 
               {/* WhatsApp Card */}
               <div className="bg-white border border-gray-200 shadow-sm p-10 rounded-[2.5rem] hover:border-emerald-300 hover:shadow-[0_0_50px_-10px_rgba(16,185,129,0.1)] transition-all group cursor-pointer relative overflow-hidden flex flex-col justify-center">

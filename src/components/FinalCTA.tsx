@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="px-4 py-32">
+    <section id="contact" className="px-4 py-16 lg:py-20">
       <div className="mx-auto max-w-4xl">
         <div className="relative overflow-hidden rounded-[2.5rem] bg-white border border-gray-100 px-6 py-20 sm:py-28 text-center shadow-[0_30px_80px_rgba(8,_112,_184,_0.08)]">
           <div className="absolute inset-0 -z-10 opacity-60" style={{ background: "radial-gradient(circle at 50% 0%, oklch(0.95 0.06 260) 0%, transparent 60%)" }} />

@@ -118,6 +118,7 @@ export function SiteHeader() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("software");
+  const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>("WHY WAVELET?");
 
   return (
     <>
@@ -271,71 +272,124 @@ export function SiteHeader() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] md:hidden bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center p-8 pt-24 overflow-y-auto"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[110] md:hidden bg-white flex flex-col font-sans"
           >
-            <div className="flex flex-col items-center gap-6 w-full py-12">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="w-full text-center"
-                >
-                  {link.isDropdown || link.isMegaMenu ? (
-                    <div className="flex flex-col items-center gap-2">
-                       <span className="text-lg font-bold text-gray-400 uppercase tracking-widest">{link.label}</span>
-                       <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-                          {(link.isDropdown ? industries : []).map((item) => (
-                             <Link
-                              key={item.label}
-                              to={item.to}
+            {/* Top Bar */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center">
+                <img src="/wavelet-logo.png" alt="Wavelet" className="h-7 w-auto object-contain" />
+              </Link>
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 text-black hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Vertical Menu List */}
+            <div className="flex-1 overflow-y-auto px-8 py-10">
+              <div className="flex flex-col gap-8 w-full max-w-sm mx-auto">
+                <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                  Home
+                </Link>
+
+                {/* What We Do Accordion */}
+                <div className="flex flex-col">
+                  <button 
+                    onClick={() => setOpenMobileAccordion(openMobileAccordion === "WHAT WE DO" ? null : "WHAT WE DO")}
+                    className="flex items-center justify-between w-full text-left"
+                  >
+                    <span className="text-2xl font-bold text-gray-900">What We Do</span>
+                    <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openMobileAccordion === "WHAT WE DO" ? "rotate-180 text-blue-600" : "text-gray-400"}`} />
+                  </button>
+                  <AnimatePresence>
+                    {openMobileAccordion === "WHAT WE DO" && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-5 pt-6 pl-5 border-l-2 border-gray-100 ml-2 mt-2">
+                          {categories.map((cat) => (
+                            <Link 
+                              key={cat.id} 
+                              to={cat.to} 
                               onClick={() => setIsMenuOpen(false)}
-                              className="text-2xl font-semibold text-gray-900 hover:text-blue-600 transition-colors"
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                          {link.isMegaMenu && categories.map((cat) => (
-                             <Link
-                              key={cat.label}
-                              to={cat.to}
-                              onClick={() => setIsMenuOpen(false)}
-                              className="text-2xl font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+                              className="text-lg text-gray-600 hover:text-blue-600 transition-colors"
                             >
                               {cat.label}
                             </Link>
                           ))}
-                       </div>
-                    </div>
-                  ) : (
-                    <Link
-                      to={link.to!}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-3xl font-semibold text-gray-900 hover:text-blue-600 transition-colors block py-2"
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.1 }}
-                className="mt-8"
-              >
-                <Link
-                  to="/contact"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="bg-gray-900 text-white text-lg font-bold px-10 py-4 rounded-full shadow-xl"
-                >
-                  Get started
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Industries Accordion */}
+                <div className="flex flex-col">
+                  <button 
+                    onClick={() => setOpenMobileAccordion(openMobileAccordion === "INDUSTRIES" ? null : "INDUSTRIES")}
+                    className="flex items-center justify-between w-full text-left"
+                  >
+                    <span className="text-2xl font-bold text-gray-900">Industries</span>
+                    <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openMobileAccordion === "INDUSTRIES" ? "rotate-180 text-blue-600" : "text-gray-400"}`} />
+                  </button>
+                  <AnimatePresence>
+                    {openMobileAccordion === "INDUSTRIES" && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-5 pt-6 pl-5 border-l-2 border-gray-100 ml-2 mt-2">
+                          {industries.map((ind) => (
+                            <Link 
+                              key={ind.label} 
+                              to={ind.to} 
+                              onClick={() => setIsMenuOpen(false)}
+                              className="text-lg text-gray-600 hover:text-blue-600 transition-colors"
+                            >
+                              {ind.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <Link to="/work" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                  Work
                 </Link>
-              </motion.div>
+
+                <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                  About
+                </Link>
+
+                <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                  Contact
+                </Link>
+
+              </div>
+            </div>
+
+            {/* Bottom Button */}
+            <div className="p-6 pb-8 border-t border-gray-100 bg-white">
+              <Link
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full bg-gray-900 text-white text-center text-lg font-bold py-4 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:bg-black transition-colors"
+              >
+                Get started
+              </Link>
             </div>
           </motion.div>
         )}

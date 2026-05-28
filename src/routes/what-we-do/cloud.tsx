@@ -61,7 +61,7 @@ function CloudRoute() {
   return (
     <div className="min-h-screen bg-white font-sans antialiased text-gray-900 selection:bg-blue-500/10 selection:text-blue-600">
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-32 px-4 bg-[#42A5F5] overflow-hidden">
+      <section className="relative pt-20 pb-20 px-4 bg-[#42A5F5] overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1 
@@ -276,7 +276,7 @@ function CloudRoute() {
       {/* 8. Quote Banner */}
       <motion.section 
         {...getSectionReveal()}
-        className="relative py-32 px-4 bg-[#42A5F5] overflow-hidden"
+        className="relative py-20 px-4 bg-[#42A5F5] overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <img src="/cloud_team_collaboration_1778999166955.png" alt="Collaborative Team" className="w-full h-full object-cover opacity-20 mix-blend-multiply" />

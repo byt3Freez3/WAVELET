@@ -1,6 +1,108 @@
-import { motion, Variants, AnimatePresence } from "framer-motion";
-import { Cloud, Database, ShieldCheck, Smartphone, Code2, Server, ArrowLeft, ArrowRight } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { motion, Variants, AnimatePresence, useInView, useMotionValue, useSpring } from "framer-motion";
+import { Cloud, Database, ShieldCheck, Smartphone, Code2, Server, ArrowLeft, ArrowRight, LayoutDashboard, BarChart3, FileText, Settings } from "lucide-react";
+import { useCallback, useEffect, useState, useRef } from "react";
+const AnimatedStat = ({ value, suffix = "", decimals = 0 }: { value: number, suffix?: string, decimals?: number }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, { duration: 2500, bounce: 0 });
+
+  useEffect(() => {
+    if (inView) {
+      motionValue.set(value);
+    }
+  }, [inView, value, motionValue]);
+
+  useEffect(() => {
+    return springValue.on("change", (latest) => {
+      if (ref.current) {
+        let formattedNumber = decimals > 0 ? latest.toFixed(decimals) : Math.round(latest);
+        ref.current.textContent = formattedNumber + suffix;
+      }
+    });
+  }, [springValue, suffix, decimals]);
+
+  return <span ref={ref} className="text-2xl sm:text-4xl font-bold bg-gradient-to-tr from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tight">0{suffix}</span>;
+};
+
+const GlobalTechCore = () => {
+  return (
+    <div className="relative w-full aspect-square bg-slate-50 rounded-[2.5rem] flex items-center justify-center overflow-hidden border border-slate-100 shadow-inner group">
+      <svg className="w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Isometric Grid Background */}
+        <defs>
+          <pattern id="isoGrid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" className="text-indigo-600/10" strokeWidth="1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#isoGrid)" />
+
+        {/* Ambient Glows */}
+        <circle cx="200" cy="200" r="150" fill="currentColor" className="text-purple-500/5 blur-3xl" />
+        
+        {/* Static Base Connecting Lines */}
+        <path
+          d="M80 120 L200 200 L320 120 M200 200 L200 320 M80 280 L200 200 L320 280"
+          stroke="currentColor"
+          className="text-indigo-500/20"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        
+        {/* Animated Data Flow Lines */}
+        <motion.path
+          d="M80 120 L200 200 L320 120 M200 200 L200 320 M80 280 L200 200 L320 280"
+          stroke="currentColor"
+          className="text-purple-500"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ strokeDasharray: "800", strokeDashoffset: 800 }}
+          animate={{ strokeDashoffset: 0 }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Nodes */}
+        {[
+          { cx: 80, cy: 120, delay: 0 },
+          { cx: 320, cy: 120, delay: 0.2 },
+          { cx: 200, cy: 200, delay: 0.4 },
+          { cx: 80, cy: 280, delay: 0.6 },
+          { cx: 320, cy: 280, delay: 0.8 },
+          { cx: 200, cy: 320, delay: 1.0 },
+        ].map((node, i) => (
+          <motion.circle
+            key={i}
+            cx={node.cx}
+            cy={node.cy}
+            r="6"
+            className="fill-indigo-500"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.8, 1, 0.8] }}
+            transition={{ duration: 2, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}
+          />
+        ))}
+
+        {/* Core Geometry */}
+        <motion.g
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: '200px 200px' }}
+        >
+          <circle cx="200" cy="200" r="60" stroke="currentColor" className="text-purple-500/40" strokeWidth="1" strokeDasharray="4 4" />
+          <motion.rect
+            x="170" y="170" width="60" height="60"
+            rx="12"
+            className="fill-indigo-600/10 stroke-purple-400 stroke-2"
+            animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 180, 270, 360] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            style={{ transformOrigin: '200px 200px' }}
+          />
+        </motion.g>
+      </svg>
+    </div>
+  );
+};
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,6 +132,88 @@ export function Hero() {
     const timer = setInterval(nextSlide, 6000);
     return () => clearInterval(timer);
   }, []);
+
+  const dashboardTabs = [
+    {
+      id: "overview",
+      label: "Overview",
+      icon: LayoutDashboard,
+      revenue: "₹248k",
+      uptime: "99.98%",
+      deploys: "42 / wk",
+      revenueTrend: "Revenue",
+      uptimeStatus: "Uptime",
+      deploysStatus: "Deploys",
+      pathD: "M0 80 Q 50 70, 100 75 T 200 40 T 300 50 T 400 20",
+      fillD: "M0 80 Q 50 70, 100 75 T 200 40 T 300 50 T 400 20 V 100 H 0 Z",
+      gradientColor: "#3b82f6",
+    },
+    {
+      id: "analytics",
+      label: "Analytics",
+      icon: BarChart3,
+      revenue: "₹312k",
+      uptime: "99.99%",
+      deploys: "56 / wk",
+      revenueTrend: "Live Traffic",
+      uptimeStatus: "SLA Response",
+      deploysStatus: "Active Nodes",
+      pathD: "M0 90 Q 50 40, 100 60 T 200 20 T 300 80 T 400 10",
+      fillD: "M0 90 Q 50 40, 100 60 T 200 20 T 300 80 T 400 10 V 100 H 0 Z",
+      gradientColor: "#10b981",
+    },
+    {
+      id: "reports",
+      label: "Reports",
+      icon: FileText,
+      revenue: "₹195k",
+      uptime: "99.95%",
+      deploys: "38 / wk",
+      revenueTrend: "Database Qs",
+      uptimeStatus: "Server Health",
+      deploysStatus: "Queries / sec",
+      pathD: "M0 50 Q 50 80, 100 30 T 200 70 T 300 30 T 400 40",
+      fillD: "M0 50 Q 50 80, 100 30 T 200 70 T 300 30 T 400 40 V 100 H 0 Z",
+      gradientColor: "#8b5cf6",
+    },
+    {
+      id: "settings",
+      label: "Settings",
+      icon: Settings,
+      revenue: "24%",
+      uptime: "4.2 GB",
+      deploys: "1.2 GB/s",
+      revenueTrend: "CPU Usage",
+      uptimeStatus: "Memory Allocation",
+      deploysStatus: "Network I/O",
+      pathD: "M0 60 Q 50 62, 100 58 T 200 60 T 300 59 T 400 60",
+      fillD: "M0 60 Q 50 62, 100 58 T 200 60 T 300 59 T 400 60 V 100 H 0 Z",
+      gradientColor: "#6366f1",
+    },
+  ];
+
+  const [activeTabIdx, setActiveTabIdx] = useState(0);
+  const [timerKey, setTimerKey] = useState(0);
+  const [activeShowcaseIdx, setActiveShowcaseIdx] = useState(0);
+  
+  const showcaseProjects = [
+    { name: "MiracleRainwear", image: "/miraclewear_showcase.jpeg", link: "/work" },
+    { name: "Computer Plaza", image: "/computer_plaza_showcase.jpeg", link: "/work" },
+    { name: "Manoj Singh Computer Wala", image: "/manoj_singh_showcase.jpeg", link: "/work" },
+    { name: "Rongeen", image: "/rongeen_showcase.jpeg", link: "/work" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTabIdx((prev) => (prev + 1) % dashboardTabs.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [timerKey]);
+
+  const handleTabClick = (idx: number) => {
+    setActiveTabIdx(idx);
+    setTimerKey((prev) => prev + 1);
+  };
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -200,71 +384,89 @@ export function Hero() {
       </div>
 
       {/* About Us Section */}
-      <div className="py-12 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 bg-white border border-gray-100 rounded-[2.5rem] shadow-xl my-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="py-12 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 bg-white border border-gray-100 rounded-[2.5rem] shadow-xl my-12 overflow-hidden">
+        {/* Subtle radial gradient background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(99,102,241,0.03),_transparent_70%)] pointer-events-none" />
+        
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2 } }
+          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10"
+        >
           {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="text-xs font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase mb-6 block">
-              WHO WE ARE
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8 tracking-tight">About Us</h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Wavelet is a precision-focused technology partner dedicated to scaling the world's most ambitious businesses. We bridge the gap between complex enterprise infrastructure and seamless user experiences.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              Our multidisciplinary team combines strategic consultancy with expert execution, empowering partners to navigate the rapidly evolving digital landscape with absolute confidence.
-            </p>
+          <div className="flex flex-col">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+              }}
+            >
+              <span className="text-xs font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase mb-6 block">
+                WHO WE ARE
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8 tracking-tight">
+                About Us
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                Wavelet is a precision-focused technology partner dedicated to scaling the world's most ambitious businesses. We bridge the gap between complex enterprise infrastructure and seamless user experiences.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                Our multidisciplinary team combines strategic consultancy with expert execution, empowering partners to navigate the rapidly evolving digital landscape with absolute confidence.
+              </p>
+            </motion.div>
             
-            <div className="flex flex-wrap gap-12 mb-12">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+              }}
+              className="grid grid-cols-3 gap-2 sm:gap-4 mb-12"
+            >
               {[
-                { label: "CUSTOMERS", value: "4700+" },
-                { label: "LOCATIONS", value: "250+" },
-                { label: "PROJECTS", value: "1.2k+" }
+                { label: "CUSTOMERS", value: 4700, suffix: "+" },
+                { label: "LOCATIONS", value: 250, suffix: "+" },
+                { label: "PROJECTS", value: 1.2, suffix: "k+", decimals: 1 }
               ].map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <div className="text-4xl font-bold bg-gradient-to-tr from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tight">
-                    {stat.value}
-                  </div>
-                  <div className="text-[10px] font-black text-gray-400 tracking-[0.2em] uppercase mt-2">
+                <div key={stat.label} className="flex flex-col bg-slate-50/50 border border-slate-100 rounded-xl p-3 sm:p-4 text-center justify-center">
+                  <AnimatedStat value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
+                  <div className="text-[9px] sm:text-[10px] font-black text-gray-500 tracking-[0.2em] uppercase mt-2">
                     {stat.label}
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
             
-            <motion.a 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="/about" 
-              className="inline-flex items-center justify-center border border-gray-200 text-gray-900 font-bold rounded-full px-10 py-4 hover:bg-gray-50 transition-all shadow-sm text-sm"
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+              }}
             >
-              Know More
-            </motion.a>
-          </motion.div>
+              <a 
+                href="/about" 
+                className="inline-flex items-center justify-center bg-slate-900 text-white font-bold rounded-full px-10 py-4 hover:-translate-y-1 hover:shadow-lg transition-all text-sm"
+              >
+                Know More
+              </a>
+            </motion.div>
+          </div>
           
           {/* Right Column */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            variants={{
+              hidden: { opacity: 0, scale: 0.95 },
+              visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut" } }
+            }}
             className="relative"
           >
-            <div className="bg-gradient-to-tr from-blue-50/50 to-purple-50/50 rounded-[2.5rem] aspect-square border border-white shadow-[inset_0_0_80px_rgba(255,255,255,1)] flex items-center justify-center overflow-hidden group">
-               <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #000 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-               <div className="relative z-10 w-48 h-48 rounded-full bg-white/40 backdrop-blur-3xl border border-white/60 shadow-2xl flex items-center justify-center animate-pulse">
-                 <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 shadow-[0_0_40px_rgba(99,102,241,0.5)]" />
-                 </div>
-               </div>
-            </div>
+            <GlobalTechCore />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Tech Solutions Section */}
@@ -275,7 +477,7 @@ export function Hero() {
         </div>
         
         <div className="relative group/carousel">
-          <div className="flex animate-scroll hover:[animation-play-state:paused] gap-8 px-4 w-max pb-12">
+          <div className="flex animate-scroll hover:[animation-play-state:paused] gap-8 px-4 w-max pb-8">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8">
                 {[
@@ -351,91 +553,219 @@ export function Hero() {
         </div>
       </div>
 
+      {/* Work Showcase Section */}
+      <div className="py-12 sm:py-16 max-w-7xl mx-auto px-4 relative z-10 border-t border-gray-200/20">
+        <div className="text-center mb-16">
+          <span className="inline-block py-1 px-4 rounded-full bg-gray-50 border border-gray-200 text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold mb-6 shadow-sm">
+            Work Showcase
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 leading-[0.9]">
+            Work that drives <br />
+            <span className="text-gray-400">revenue.</span>
+          </h2>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-6 items-stretch bg-white border border-gray-200 rounded-[2.5rem] p-4 shadow-xl">
+          {/* Tabs List */}
+          <div className="flex flex-col w-full lg:w-1/3 gap-2 justify-center">
+            {showcaseProjects.map((project, idx) => (
+              <a
+                key={project.name}
+                href={project.link}
+                onMouseEnter={() => setActiveShowcaseIdx(idx)}
+                className={`p-6 rounded-2xl transition-all duration-300 flex items-center justify-between group cursor-pointer border border-transparent ${
+                  activeShowcaseIdx === idx 
+                    ? "bg-gray-900 text-white shadow-lg border-gray-800 transform scale-[1.02]" 
+                    : "hover:bg-gray-50 text-gray-600 hover:border-gray-200"
+                }`}
+              >
+                <span className={`font-semibold text-lg ${activeShowcaseIdx === idx ? "text-white" : "text-gray-900"}`}>
+                  {project.name}
+                </span>
+                <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${activeShowcaseIdx === idx ? "text-white" : "text-gray-400"}`} />
+              </a>
+            ))}
+          </div>
+
+          {/* Image Display */}
+          <div className="w-full lg:w-2/3 aspect-[16/9] relative group bg-gray-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-gray-100">
+            <a href={showcaseProjects[activeShowcaseIdx].link} className="absolute inset-0 block">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeShowcaseIdx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  src={showcaseProjects[activeShowcaseIdx].image}
+                  alt={showcaseProjects[activeShowcaseIdx].name}
+                  className="w-full h-full object-contain"
+                />
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gray-900/5 group-hover:bg-transparent transition-colors duration-500" />
+            </a>
+          </div>
+        </div>
+      </div>
+
       <motion.div 
         initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="relative mx-auto max-w-5xl px-2 pb-8 sm:pb-12"
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="relative mx-auto max-w-5xl px-4 pb-8 sm:pb-12 mt-12 sm:mt-16"
       >
-        <div className="relative rounded-t-3xl bg-white border border-gray-200 shadow-2xl overflow-hidden">
+        <div className="relative rounded-[2rem] bg-white border border-gray-200 shadow-2xl overflow-hidden">
           {/* Window chrome */}
-          <div className="flex items-center gap-1.5 px-6 py-4 border-b border-gray-100 bg-gray-50/50">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-            <span className="ml-4 text-[11px] text-gray-500 font-mono tracking-wider">app.wavelet.dev/dashboard</span>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+              <span className="ml-4 text-[11px] text-gray-500 font-mono tracking-wider">app.wavelet.dev/dashboard</span>
+            </div>
+            {/* Live Indicator */}
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">LIVE STATUS</span>
+            </div>
           </div>
 
           {/* Dashboard body */}
-          <div className="flex flex-col sm:grid sm:grid-cols-12 gap-4 sm:gap-6 p-6 sm:p-10 h-auto sm:h-[450px]">
-            {/* Sidebar */}
-            <div className="hidden sm:flex col-span-2 flex-col gap-3">
-              <div className="h-8 rounded-xl bg-gray-200" />
-              <div className="h-6 rounded-xl bg-gray-100" />
-              <div className="h-6 rounded-xl bg-gray-100" />
-              <div className="h-6 rounded-xl bg-gray-100" />
-              <div className="h-6 rounded-xl bg-gray-100" />
+          <div className="flex flex-col sm:grid sm:grid-cols-12 gap-4 sm:gap-6 p-6 sm:p-10 min-h-[460px]">
+            
+            {/* Sidebar (Vertical Menu on desktop, horizontal on mobile) */}
+            <div className="flex sm:flex-col col-span-12 sm:col-span-3 gap-2 overflow-x-auto sm:overflow-x-visible pb-3 sm:pb-0 border-b sm:border-b-0 sm:border-r border-gray-100 pr-0 sm:pr-4 shrink-0 scrollbar-none">
+              <div className="hidden sm:block text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3 px-3">
+                Workspace
+              </div>
+              {dashboardTabs.map((tab, idx) => {
+                const IconComponent = tab.icon;
+                const isActive = idx === activeTabIdx;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => handleTabClick(idx)}
+                    className={`flex items-center gap-2.5 py-2.5 px-4 rounded-xl text-left transition-all duration-300 shrink-0 text-xs font-semibold ${
+                      isActive
+                        ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
+                        : "text-gray-500 hover:text-gray-900 hover:bg-gray-100/80"
+                    }`}
+                  >
+                    <IconComponent className={`w-4 h-4 transition-transform duration-300 ${isActive ? "rotate-3" : "group-hover:scale-110"}`} />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
             </div>
-            {/* Main */}
-            <div className="col-span-12 sm:col-span-10 flex flex-col sm:grid sm:grid-cols-6 gap-4 sm:gap-6">
-              <div className="w-full sm:col-span-2 rounded-2xl p-6 flex flex-row sm:flex-col justify-between items-center sm:items-start bg-blue-50 border border-blue-100 shadow-sm">
-                <span className="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em]">Revenue</span>
-                <span className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">$248k</span>
+
+            {/* Main Area */}
+            <div className="col-span-12 sm:col-span-9 flex flex-col gap-4 sm:gap-6 pl-0 sm:pl-2">
+              
+              {/* Three Stat Cards */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-6">
+                
+                {/* Stat 1 */}
+                <div className="rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-start bg-blue-50 border border-blue-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
+                  <span className="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em] break-words">
+                    {dashboardTabs[activeTabIdx].revenueTrend}
+                  </span>
+                  <motion.span 
+                    key={activeTabIdx + "-rev"}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
+                  >
+                    {dashboardTabs[activeTabIdx].revenue}
+                  </motion.span>
+                </div>
+
+                {/* Stat 2 */}
+                <div className="rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-start bg-emerald-50 border border-emerald-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
+                  <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-[0.2em] break-words">
+                    {dashboardTabs[activeTabIdx].uptimeStatus}
+                  </span>
+                  <motion.span 
+                    key={activeTabIdx + "-upt"}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
+                  >
+                    {dashboardTabs[activeTabIdx].uptime}
+                  </motion.span>
+                </div>
+
+                {/* Stat 3 */}
+                <div className="rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-start bg-purple-50 border border-purple-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
+                  <span className="text-[10px] font-bold text-purple-600 uppercase tracking-[0.2em] break-words">
+                    {dashboardTabs[activeTabIdx].deploysStatus}
+                  </span>
+                  <motion.span 
+                    key={activeTabIdx + "-dep"}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
+                  >
+                    {dashboardTabs[activeTabIdx].deploys}
+                  </motion.span>
+                </div>
+
               </div>
-              <div className="w-full sm:col-span-2 rounded-2xl p-6 flex flex-row sm:flex-col justify-between items-center sm:items-start bg-emerald-50 border border-emerald-100 shadow-sm">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-[0.2em]">Uptime</span>
-                <span className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">99.98%</span>
-              </div>
-              <div className="w-full sm:col-span-2 rounded-2xl p-6 flex flex-row sm:flex-col justify-between items-center sm:items-start bg-purple-50 border border-purple-100 shadow-sm">
-                <span className="text-[10px] font-bold text-purple-600 uppercase tracking-[0.2em]">Deploys</span>
-                <span className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">42 / wk</span>
-              </div>
-              <div className="w-full sm:col-span-6 rounded-2xl bg-white border border-gray-100 shadow-sm p-6 relative overflow-hidden">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold text-gray-500 tracking-wider">Performance</span>
+
+              {/* Line Chart */}
+              <div className="flex-1 rounded-2xl bg-white border border-gray-100 shadow-sm p-4 sm:p-6 relative overflow-hidden flex flex-col justify-between min-h-[180px] sm:min-h-[220px]">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-gray-900 tracking-wider">Metrics Performance</span>
+                    <span className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Real-time system telemetry</span>
+                  </div>
                   <div className="flex gap-2">
-                    <div className="h-2 w-2 rounded-full bg-blue-500" />
-                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span className="px-2.5 py-1 bg-gray-100 rounded-lg text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+                      Active: {dashboardTabs[activeTabIdx].label}
+                    </span>
                   </div>
                 </div>
-                <svg viewBox="0 0 400 100" className="w-full h-[120px] sm:h-[180px]">
-                  <defs>
-                    <linearGradient id="heroChartDark" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
-                      <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0 80 Q 50 70, 100 75 T 200 40 T 300 50 T 400 20 V 100 H 0 Z" fill="url(#heroChartDark)" />
-                  <path d="M0 80 Q 50 70, 100 75 T 200 40 T 300 50 T 400 20" fill="none" stroke="#3b82f6" strokeWidth="3" strokeLinecap="round" />
-                </svg>
+
+                <div className="relative w-full flex-1 flex items-end">
+                  <svg viewBox="0 0 400 100" className="w-full h-[100px] sm:h-[130px]" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="heroChartGradient" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stopColor={dashboardTabs[activeTabIdx].gradientColor} stopOpacity="0.25" />
+                        <stop offset="100%" stopColor={dashboardTabs[activeTabIdx].gradientColor} stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    
+                    {/* Fill Area with path morph animation */}
+                    <motion.path 
+                      d={dashboardTabs[activeTabIdx].fillD} 
+                      fill="url(#heroChartGradient)"
+                      animate={{ d: dashboardTabs[activeTabIdx].fillD }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                    />
+                    
+                    {/* Stroke Line with path morph animation */}
+                    <motion.path 
+                      d={dashboardTabs[activeTabIdx].pathD} 
+                      fill="none" 
+                      stroke={dashboardTabs[activeTabIdx].gradientColor} 
+                      strokeWidth="3.5" 
+                      strokeLinecap="round"
+                      animate={{ d: dashboardTabs[activeTabIdx].pathD }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                    />
+                  </svg>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Trust banner */}
-      <div className="mx-auto max-w-5xl mt-12 px-4 overflow-hidden opacity-40">
-        <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold text-center mb-12">
-          Trusted by innovative teams worldwide
-        </p>
-        <div className="relative">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex shrink-0 items-center gap-x-16 sm:gap-x-24 px-8">
-                {["AWS", "GOOGLE CLOUD", "META", "MICROSOFT", "AZURE", "STRIPE", "RAZORPAY"].map((b) => (
-                  <span 
-                    key={`${b}-${i}`} 
-                    className="text-sm font-black tracking-[0.2em] text-gray-400 hover:text-gray-900 transition-all cursor-default"
-                  >
-                    {b}
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+
     </section>
   );
 }
