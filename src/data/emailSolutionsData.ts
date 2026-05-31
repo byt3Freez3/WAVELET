@@ -234,6 +234,12 @@ export const emailSolutionsData = {
           id: "usecase-workflow-automation",
           title: "Workflow Automation",
           description: "Automating the onboarding and offboarding workflows for a high-turnover retail business."
+        },
+        {
+          id: "usecase-dpdp-compliance",
+          title: "DPDP Act Compliance",
+          description: "Implementing robust data localization, end-to-end encryption, and consent-driven mail routing architectures to ensure strict adherence to India's Digital Personal Data Protection Act.",
+          footer_tag: "Data Privacy Verified"
         }
       ]
     },

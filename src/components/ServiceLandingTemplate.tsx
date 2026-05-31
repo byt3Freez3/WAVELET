@@ -118,7 +118,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...sectionTransition, delay: shouldReduceMotion ? 0 : 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-4 relative z-30 max-sm:mb-24"
           >
             <Link to="/contact" className={`px-10 py-5 rounded-full font-bold transition-all shadow-xl ${isHeroLight ? 'bg-slate-900 text-white hover:bg-slate-800 hover:scale-[1.02] active:scale-[0.98]' : 'bg-white text-gray-900 hover:bg-gray-100 hover:scale-[1.02] active:scale-[0.98]'}`}>
               Get Started Now
@@ -133,7 +133,7 @@ export function ServiceLandingTemplate({ data }: { data: ServiceData }) {
       {/* 2. Stats Strip */}
       <motion.section 
         {...getSectionReveal()}
-        className="relative z-20 -mt-16 px-4"
+        className="relative z-20 max-sm:z-10 -mt-16 px-4"
       >
         <motion.div 
           {...getGridContainer()}

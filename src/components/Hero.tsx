@@ -22,7 +22,7 @@ const AnimatedStat = ({ value, suffix = "", decimals = 0 }: { value: number, suf
     });
   }, [springValue, suffix, decimals]);
 
-  return <span ref={ref} className="text-2xl sm:text-4xl font-bold bg-gradient-to-tr from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tight">0{suffix}</span>;
+  return <span ref={ref} className="text-xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-tr from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tighter">0{suffix}</span>;
 };
 
 const GlobalTechCore = () => {
@@ -209,6 +209,13 @@ export function Hero() {
     }, 3500);
     return () => clearInterval(interval);
   }, [timerKey]);
+
+  useEffect(() => {
+    const showcaseInterval = setInterval(() => {
+      setActiveShowcaseIdx((prev) => (prev + 1) % showcaseProjects.length);
+    }, 3500);
+    return () => clearInterval(showcaseInterval);
+  }, []);
 
   const handleTabClick = (idx: number) => {
     setActiveTabIdx(idx);
@@ -432,9 +439,9 @@ export function Hero() {
                 { label: "LOCATIONS", value: 250, suffix: "+" },
                 { label: "PROJECTS", value: 1.2, suffix: "k+", decimals: 1 }
               ].map((stat) => (
-                <div key={stat.label} className="flex flex-col bg-slate-50/50 border border-slate-100 rounded-xl p-3 sm:p-4 text-center justify-center">
+                <div key={stat.label} className="flex flex-col bg-slate-50/50 border border-slate-100 rounded-xl px-2 py-3 sm:p-4 text-center justify-center">
                   <AnimatedStat value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
-                  <div className="text-[9px] sm:text-[10px] font-black text-gray-500 tracking-[0.2em] uppercase mt-2">
+                  <div className="text-[8px] sm:text-[10px] font-black text-gray-500 tracking-[0.1em] sm:tracking-[0.2em] uppercase mt-1 sm:mt-2">
                     {stat.label}
                   </div>
                 </div>
@@ -617,7 +624,7 @@ export function Hero() {
       >
         <div className="relative rounded-[2rem] bg-white border border-gray-200 shadow-2xl overflow-hidden">
           {/* Window chrome */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-2 px-6 py-4 border-b border-gray-100 bg-gray-50/50">
             <div className="flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
@@ -625,7 +632,7 @@ export function Hero() {
               <span className="ml-4 text-[11px] text-gray-500 font-mono tracking-wider">app.wavelet.dev/dashboard</span>
             </div>
             {/* Live Indicator */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 max-sm:mt-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -666,48 +673,48 @@ export function Hero() {
             <div className="col-span-12 sm:col-span-9 flex flex-col gap-4 sm:gap-6 pl-0 sm:pl-2">
               
               {/* Three Stat Cards */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-6">
+              <div className="flex overflow-x-auto sm:grid sm:grid-cols-3 gap-3 sm:gap-6 pb-2 sm:pb-0 w-full snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 
                 {/* Stat 1 */}
-                <div className="rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-start bg-blue-50 border border-blue-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
-                  <span className="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em] break-words">
+                <div className="min-w-[130px] flex-shrink-0 snap-center sm:min-w-0 rounded-2xl p-3 sm:p-5 flex flex-col justify-between items-start bg-blue-50 border border-blue-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
+                  <span className="text-[10px] sm:text-xs leading-tight font-bold text-blue-600 uppercase tracking-[0.2em] break-words whitespace-normal">
                     {dashboardTabs[activeTabIdx].revenueTrend}
                   </span>
                   <motion.span 
                     key={activeTabIdx + "-rev"}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
+                    className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
                   >
                     {dashboardTabs[activeTabIdx].revenue}
                   </motion.span>
                 </div>
 
                 {/* Stat 2 */}
-                <div className="rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-start bg-emerald-50 border border-emerald-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
-                  <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-[0.2em] break-words">
+                <div className="min-w-[130px] flex-shrink-0 snap-center sm:min-w-0 rounded-2xl p-3 sm:p-5 flex flex-col justify-between items-start bg-emerald-50 border border-emerald-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
+                  <span className="text-[10px] sm:text-xs leading-tight font-bold text-emerald-600 uppercase tracking-[0.2em] break-words whitespace-normal">
                     {dashboardTabs[activeTabIdx].uptimeStatus}
                   </span>
                   <motion.span 
                     key={activeTabIdx + "-upt"}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
+                    className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
                   >
                     {dashboardTabs[activeTabIdx].uptime}
                   </motion.span>
                 </div>
 
                 {/* Stat 3 */}
-                <div className="rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-start bg-purple-50 border border-purple-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
-                  <span className="text-[10px] font-bold text-purple-600 uppercase tracking-[0.2em] break-words">
+                <div className="min-w-[130px] flex-shrink-0 snap-center sm:min-w-0 rounded-2xl p-3 sm:p-5 flex flex-col justify-between items-start bg-purple-50 border border-purple-100 shadow-sm transition-all duration-500 hover:shadow-md min-h-[90px] sm:min-h-[110px]">
+                  <span className="text-[10px] sm:text-xs leading-tight font-bold text-purple-600 uppercase tracking-[0.2em] break-words whitespace-normal">
                     {dashboardTabs[activeTabIdx].deploysStatus}
                   </span>
                   <motion.span 
                     key={activeTabIdx + "-dep"}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
+                    className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-2"
                   >
                     {dashboardTabs[activeTabIdx].deploys}
                   </motion.span>

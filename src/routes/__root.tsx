@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { m, LazyMotion, domAnimation, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 import appCss from "../styles.css?url";
 
@@ -100,7 +101,7 @@ function RootComponent() {
         </AnimatePresence>
       </LazyMotion>
       <ScrollToTop />
-
+      <WhatsAppButton />
     </div>
   );
 }

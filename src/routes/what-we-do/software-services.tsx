@@ -134,12 +134,12 @@ function SoftwareServicesRoute() {
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...sectionTransition, delay: shouldReduceMotion ? 0 : 0.2 }}
-            className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto relative z-50 max-sm:mb-32 max-sm:pb-12"
           >
-            <Link to="/contact" className="w-full sm:w-auto rounded-full bg-white text-indigo-700 hover:bg-indigo-50 font-bold px-10 py-4.5 hover:scale-[1.02] active:scale-95 transition-all shadow-md text-base cursor-pointer text-center">
+            <Link to="/contact" className="w-full sm:w-auto rounded-full bg-white text-indigo-700 hover:bg-indigo-50 font-bold px-10 py-4 sm:py-5 hover:scale-[1.02] active:scale-95 transition-all shadow-md text-base cursor-pointer text-center">
               Get Started Now
             </Link>
-            <Link to="/contact" className="w-full sm:w-auto rounded-full bg-indigo-600/30 border border-indigo-300/40 text-white hover:bg-indigo-600/50 font-bold px-10 py-4.5 hover:scale-[1.02] active:scale-95 transition-all text-base backdrop-blur cursor-pointer text-center">
+            <Link to="/contact" className="w-full sm:w-auto rounded-full bg-indigo-600/30 border border-indigo-300/40 text-white hover:bg-indigo-600/50 font-bold px-10 py-4 sm:py-5 hover:scale-[1.02] active:scale-95 transition-all text-base backdrop-blur cursor-pointer text-center">
               Watch Demo
             </Link>
           </motion.div>
@@ -150,7 +150,7 @@ function SoftwareServicesRoute() {
       <div className="bg-[#d3d5f2] w-full py-4 sm:py-6 space-y-6 sm:space-y-8 relative z-10">
         
         {/* Stats Strip - Zero Dead Space overlay */}
-        <section className="relative z-20 -mt-12 px-4">
+        <section className="relative z-20 max-sm:z-10 -mt-12 px-4">
           <motion.div 
             {...getGridContainer()}
             className="max-w-6xl mx-auto bg-white/95 backdrop-blur-md border border-white/50 rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center shadow-lg shadow-indigo-900/5"

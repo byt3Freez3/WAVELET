@@ -122,7 +122,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-5xl bg-white/80 backdrop-blur-2xl border border-gray-200 rounded-full px-4 py-2 md:px-6 md:py-3 flex items-center justify-between shadow-sm transition-all duration-300">
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-5xl bg-white/70 backdrop-blur-md -webkit-backdrop-blur border border-white/40 shadow-sm shadow-slate-900/5 rounded-full px-4 py-2 md:px-6 md:py-3 flex items-center justify-between transition-all duration-300">
         <Link to="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
           <img 
             src="/wavelet-logo.png" 
@@ -141,7 +141,7 @@ export function SiteHeader() {
             >
               {link.isMegaMenu ? (
                 <>
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors z-10 relative">
+                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-800 hover:text-gray-900 transition-colors z-10 relative">
                     {link.label}
                     <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                     {hoveredLink === link.label && (
@@ -201,7 +201,7 @@ export function SiteHeader() {
                 </>
               ) : link.isDropdown ? (
                 <>
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors z-10 relative">
+                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-800 hover:text-gray-900 transition-colors z-10 relative">
                     {link.label}
                     <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                     {hoveredLink === link.label && (
@@ -230,7 +230,7 @@ export function SiteHeader() {
               ) : (
                 <Link 
                   to={link.to!}
-                  className="block relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors z-10"
+                  className="block relative px-4 py-2 text-sm font-medium text-slate-800 hover:text-gray-900 transition-colors z-10"
                 >
                   {link.label}
                   {hoveredLink === link.label && (

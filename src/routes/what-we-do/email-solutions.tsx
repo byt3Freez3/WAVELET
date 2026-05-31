@@ -681,7 +681,7 @@ function EmailSolutionsRoute() {
                 {/* Filling Progress Indicator Bar */}
                 <div className="pt-5 border-t border-red-100 mt-auto">
                   <div className="flex justify-between items-center text-[10px] text-red-700 font-bold uppercase tracking-widest mb-2.5">
-                    <span>Uptime & Scale Verified</span>
+                    <span>{useCases.items[activeUcIdx].footer_tag || "Uptime & Scale Verified"}</span>
                     <span>Cycling...</span>
                   </div>
                   <div className="w-full h-1 bg-red-50 rounded-full overflow-hidden">
